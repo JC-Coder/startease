@@ -1,0 +1,47 @@
+# Dependency directories
+node_modules/
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Environment config
+.env
+
+# Debugging files
+.vscode/
+.idea/
+
+# Editor-specific files
+*.swp
+*.swo
+
+# Mac OSX files
+.DS_Store
+
+# Webstorm project settings
+.idea/
+
+# Visual Studio Code settings
+.vscode/
+
+# Node.js generated files
+node_modules/
+npm-debug.log
+
+# Parcel
+.cache/
+dist/
+
+# System Files
+Thumbs.db
+
+# Typescript
+*.tsbuildinfo
+

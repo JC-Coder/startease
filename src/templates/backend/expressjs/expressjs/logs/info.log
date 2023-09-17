@@ -1,0 +1,9 @@
+2023-09-17 19:37:44 error: 404 - route not found - / - GET - ::1
+2023-09-17 19:37:44 info: GET / [33m404 17.319 ms - 60
+2023-09-17 19:49:46 error: 404 - route not found - /hello - GET - ::1
+2023-09-17 19:49:46 info: GET /hello [33m404 22.725 ms - 60
+2023-09-17 19:50:36 info: GET /user [32m200 0.954 ms - 29
+2023-09-17 19:52:20 error: 404 - User not found - /user - GET - ::1
+2023-09-17 19:52:20 info: GET /user [33m404 8.260 ms - 60
+2023-09-17 19:53:02 error: 404 - User not found - /user - GET - ::1
+2023-09-17 19:53:02 info: GET /user [33m404 7.348 ms - 56
