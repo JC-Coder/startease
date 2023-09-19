@@ -7,10 +7,10 @@ const color2 = {
   blue: "#0079FF",
 };
 
-const useGradinent = (opt) => {
+const useGradient = (opt) => {
   const titleColor = opt.colors ?? Object.values(color2);
   const title = gradient(titleColor)(opt.title ?? "");
   console.log(title);
 };
 
-export default useGradinent;
+export default useGradient;

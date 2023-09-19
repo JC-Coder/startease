@@ -8,7 +8,7 @@ import {program} from 'commander';
 import {fileURLToPath} from 'url';
 import simpleGit from 'simple-git';
 import chalk from 'chalk';
-import useGradinent from './src/utils/useGradient.js';
+import useGradient from './src/utils/useGradient.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,7 +28,6 @@ async function startProject() {
     let initGit;
     let initDB;
     let database;
-    let useOrm;
     let orm;
     let templateDir;
     let templatePathSuffix = ''; // this will hold the path to the path to the template folder
@@ -55,6 +54,10 @@ async function startProject() {
             orm: {
                 mongoose: 'orm1',
                 typeorm: 'orm2'
+            },
+            validation: {
+                joi: 'vd1',
+                expressValidator: 'vd2'
             }
         }
     };
@@ -86,7 +89,6 @@ async function startProject() {
         if (initDB) {
             database = await promptDatabase();
 
-            useOrm = await promptUseOrm();
             orm = await promptOrm(database);
         }
     }
@@ -107,7 +109,7 @@ async function startProject() {
                     templatePathCodeObject.backend.database[database];
             }
 
-            if (useOrm && orm) {
+            if (orm) {
                 templatePathSuffix += templatePathCodeObject.backend.orm[orm];
             }
 
@@ -234,19 +236,6 @@ async function promptProjectType() {
     return ans.projectComplexity;
 }
 
-async function promptUseOrm() {
-    const ans = await inquirer.prompt([
-        {
-            type: 'confirm',
-            name: 'useOrm',
-            message: 'Do you want to use a database orm?',
-            default: false
-        }
-    ]);
-
-    return ans.useOrm;
-}
-
 async function promptOrm(database) {
     database = database?.toLowerCase() ?? '';
     console.log('--database', database);
@@ -279,7 +268,7 @@ function renderTitle() {
         whitespaceBreak: true
     };
 
-    useGradinent({
+    useGradient({
         title: figlet.textSync('Project Starter', figletConfig)
     });
 }
