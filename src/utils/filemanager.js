@@ -19,8 +19,6 @@ export function emptyDirectory(path, cb = null) {
   cb && cb();
 }
 
-const fs = require('fs');
-
 export function updateFileContent(filePath, newContent, datas) {
   try {
     // Replace placeholders like {{template_string}} with values from datas
@@ -45,6 +43,7 @@ export function updateFileContent(filePath, newContent, datas) {
 
 // Example usage:
 const filePath = 'path/to/your/file.ts';
+
 const newContent = `
 import { Module } from '@nestjs/common';
 {{database_module_import_path}}
@@ -56,9 +55,20 @@ import { Module } from '@nestjs/common';
 })
 export class DatabaseModule {}
 `;
+
 const datas = {
-  'database_module_import_path': 'import { MongooseModule } from \'@nestjs/mongoose\';',
-  'database_module_config': 'MongooseModule.forRoot(ENVIRONMENT.DB.URL)',
+  database_module_import_path:
+    "import { MongooseModule } from '@nestjs/mongoose';",
+  database_module_config: 'MongooseModule.forRoot(ENVIRONMENT.DB.URL)'
 };
 
-updateFileContent(filePath, newContent, datas);
+// updateFileContent(filePath, newContent, datas);
+
+export function removeFile(filePath) {
+  try {
+    fs.unlink(filePath);
+    console.log(`File '${filePath}' has been removed successfully.`);
+  } catch (err) {
+    console.error(`Error removing file '${filePath}': ${err}`);
+  }
+}

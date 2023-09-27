@@ -5,168 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23a98b9a-75a0-4ca1-b9f1-7eb61421f677" name="Changes" comment="update project &#10;- add base expressjs template &#10;- add expressjsdb1orm1 template">
-      <change afterPath="$PROJECT_DIR$/src/utils/stack-options.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/base/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/base/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/base/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/base/src/common/config/environment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/base/src/common/utils/appError.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/base/src/common/utils/errorHandler.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/base/src/common/utils/helper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/base/src/common/utils/logger.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/base/src/common/validators/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/base/src/modules/controllers/user.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/base/src/modules/routes/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/base/src/modules/routes/user.route.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/base/src/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/common/config/environment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/common/utils/appError.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/common/utils/errorHandler.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/common/utils/helper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/common/utils/logger.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/common/validators/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/modules/controllers/user.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/modules/routes/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/modules/routes/user.route.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/common/config/database.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/common/config/environment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/common/utils/appError.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/common/utils/errorHandler.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/common/utils/helper.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/common/utils/logger.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/common/validators/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/modules/controllers/user.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/modules/routes/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/modules/routes/user.route.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/modules/schemas/user.schema.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/.eslintrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/nest-cli.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/app.controller.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/app.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/app.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/common/configs/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/common/filter/filter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/common/utils/helper.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/module/v1/user/user.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/module/v1/user/user.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/module/v1/user/user.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/test/app.e2e-spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/test/jest-e2e.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/tsconfig.build.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/base/app-module.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/base/databases.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/base/environment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/base/main-file.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/base/package-json.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/.eslintrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/nest-cli.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/app.controller.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/app.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/app.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/common/configs/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/common/filter/filter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/common/utils/helper.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/module/v1/database/database.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/module/v1/database/sample-schema.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/module/v1/user/user.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/module/v1/user/user.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/module/v1/user/user.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/test/app.e2e-spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/test/jest-e2e.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/tsconfig.build.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/create-backend-project.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/nestjs/database.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/.idea/nestjs.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cli.js" beforeDir="false" afterPath="$PROJECT_DIR$/cli.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/helpers/filemanager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/filemanager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/base/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/base/logs/info.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/base/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/base/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/base/src/common/config/environment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/base/src/common/utils/appError.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/base/src/common/utils/errorHandler.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/base/src/common/utils/helper.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/base/src/common/utils/logger.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/base/src/common/validators/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/base/src/modules/controllers/user.controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/base/src/modules/routes/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/base/src/modules/routes/user.route.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/base/src/server.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjs/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjs/logs/info.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjs/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjs/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjs/src/common/config/environment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjs/src/common/utils/appError.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjs/src/common/utils/errorHandler.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjs/src/common/utils/helper.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjs/src/common/utils/logger.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjs/src/common/validators/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjs/src/modules/controllers/user.controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjs/src/modules/routes/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjs/src/modules/routes/user.route.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjs/src/server.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjsdb1orm1/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjsdb1orm1/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjsdb1orm1/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjsdb1orm1/src/common/config/database.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjsdb1orm1/src/common/config/environment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjsdb1orm1/src/common/utils/appError.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjsdb1orm1/src/common/utils/errorHandler.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjsdb1orm1/src/common/utils/helper.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjsdb1orm1/src/common/utils/logger.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjsdb1orm1/src/common/validators/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjsdb1orm1/src/modules/controllers/user.controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjsdb1orm1/src/modules/routes/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjsdb1orm1/src/modules/routes/user.route.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjsdb1orm1/src/modules/schemas/user.schema.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/expressjs/expressjsdb1orm1/src/server.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/.eslintrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/.prettierrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/nest-cli.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/src/app.controller.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/src/app.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/src/app.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/src/app.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/src/common/configs/environment.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/src/common/filter/filter.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/src/common/utils/helper.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/src/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/src/module/v1/user/user.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/src/module/v1/user/user.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/src/module/v1/user/user.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/test/app.e2e-spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/test/jest-e2e.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/tsconfig.build.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/base/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/backend/nestjs/nestjsdb1orm1/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/module/v1/database/database.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/module/v1/database/database.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,13 +25,6 @@
       <list>
         <option value="JavaScript File" />
       </list>
-    </option>
-  </component>
-  <component name="FormatOnSaveOptions">
-    <option name="myRunOnSave" value="false" />
-    <option name="myAllFileTypesSelected" value="true" />
-    <option name="mySelectedFileTypes">
-      <set />
     </option>
   </component>
   <component name="Git.Settings">
@@ -218,9 +58,9 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "master",
-    "javascript.nodejs.core.library.configured.version": "16.20.1",
-    "javascript.nodejs.core.library.typings.version": "16.18.52",
-    "last_opened_file_path": "/Users/jccoder/Documents/personal projects/project-starter-cli/src/templates/backend/nestjs/base",
+    "javascript.nodejs.core.library.configured.version": "16.20.2",
+    "javascript.nodejs.core.library.typings.version": "16.18.54",
+    "last_opened_file_path": "/Users/jccoder/Documents/projects/tool/project-starter-cli",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -228,8 +68,8 @@
     "nodejs_package_manager_path": "npm",
     "prettier.import.notification.dismissed": "true",
     "prettierjs.PrettierConfiguration.Package": "/Users/jccoder/Documents/personal projects/project-starter-cli/templates/backend/nestjs/nestjs/node_modules/prettier",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "ts.external.directory.path": "/Users/jccoder/Documents/personal projects/project-starter-cli/templates/backend/nestjs/nestjs/node_modules/typescript/lib"
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "ts.external.directory.path": "/Users/jccoder/Documents/projects/tool/project-starter-cli/templates/backend/nestjs/nestjs/node_modules/typescript/lib"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -272,6 +112,7 @@
       <workItem from="1695002976566" duration="2555000" />
       <workItem from="1695101522184" duration="4496000" />
       <workItem from="1695507019674" duration="4443000" />
+      <workItem from="1695828913365" duration="1702000" />
     </task>
     <task id="LOCAL-00001" summary="update project &#10;- add base expressjs template &#10;- add expressjsdb1orm1 template">
       <option name="closed" value="true" />
