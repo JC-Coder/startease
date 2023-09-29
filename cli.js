@@ -17,7 +17,10 @@ import {
   removeFolder,
   writeToFile
 } from './src/utils/filemanager.js';
-import { DATABASE_MODULE } from './templates/backend/nestjs/base/databases.js';
+import {
+  DATABASE_MODULE,
+  MongodbSchema
+} from './templates/backend/nestjs/base/databases.js';
 import { MongodbDatabaseConfig } from './src/utils/nestjs/database.js';
 import { createBackendProject } from './src/utils/create-backend-project.js';
 
@@ -191,15 +194,16 @@ async function startProject() {
   //   MongodbDatabaseConfig()
   // );
 
-  // await createBackendProject(
-  //   '/Users/jccoder/Documents/projects/tool/project-starter-cli/test-project',
-  //   'simple-projecttttt',
-  //   'nestjs',
-  //   'mongodb',
-  //   'mongoose'
-  // );
-
-  createAndUpdateFile(
-    `/Users/jccoder/Documents/projects/tool/project-starter-cli/file.txt`, 'sample content'
+  await createBackendProject(
+    '/Users/jccoder/Documents/projects/tool/project-starter-cli',
+    'simple-projecttttt',
+    'nestjs',
+    'mongodb',
+    'mongoose'
   );
+
+  // createAndUpdateFile(
+  //   `/Users/jccoder/Documents/projects/tool/project-starter-cli/test-file.ts`,
+  //   MongodbSchema()
+  // );
 }

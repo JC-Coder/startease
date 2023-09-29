@@ -23,10 +23,6 @@ const getTemplateDir = (filePath) => {
   return path.join(__dirname, '..', '../templates', filePath);
 };
 
-const getDestination = (projectName) => {
-  path.join(process.cwd(), projectName ?? `project-starter-demo-template`);
-};
-
 export async function createBackendProject(
   destination,
   projectName,
@@ -35,36 +31,34 @@ export async function createBackendProject(
   orm
 ) {
   console.log('creating backend project');
-  const destinationPath = path.join(process.cwd(), projectName);
+  const destinationPath = path.join(process.cwd(), projectName ?? `project-starter-${framework}-template`);
 
-  console.log(destinationPath);
+  console.log('destinationPath', destinationPath);
 
   if (framework == 'nestjs') {
     let appModules = '';
     let appModuleImports = '';
 
-    console.log(getTemplateDir('backend'));
-
     // copy nestjs template to directory
-    await copyFile(getTemplateDir('backend/nestjs/nestjs'), destinationPath);
+    copyFile(getTemplateDir('backend/nestjs/nestjs'), destinationPath);
 
     if (database) {
       switch (database) {
         case 'mongodb':
-          // remove sample model file
-          // removeFile(`${destination}/src/module/v1/database/sample.model.ts`);
-
           switch (orm) {
             case 'mongoose':
+              // write db config
               writeToFile(
-                `${destination}/src/module/v1/database/database.module.ts`,
-                MongodbDatabaseConfig()
+                `${destinationPath}/src/module/v1/database/database.module.ts`,
+                MongodbDatabaseConfig
               );
-              // await createAndUpdateFile(
-              //   `${destination}/src/module/v1/database/new-schema.ts`,
-              //   MongodbSchema()
-              // );
-              writeToFile(`${destination}/src/new-schema.ts`, MongodbSchema());
+
+              // create sample schema file for db
+              createAndUpdateFile(
+                `${destinationPath}/src/module/v1/database/sample.schema.ts`,
+                MongodbSchema
+              );
+
               appModules += 'DatabaseModule';
               appModuleImports +=
                 'import { DatabaseModule } from "./module/v1/database/database.module";';
@@ -75,8 +69,8 @@ export async function createBackendProject(
 
       // update app module
       updateFileContent(
-        `${destination}/src/app.module.ts`,
-        AppModuleContent(),
+        `${destinationPath}/src/app.module.ts`,
+        AppModuleContent,
         {
           database_module_path: appModuleImports,
           database_module: appModules

@@ -1,4 +1,4 @@
-export const DATABASE_MODULE = () => `
+export const DATABASE_MODULE = `
 import { Module } from '@nestjs/common';
 import { ENVIRONMENT } from 'src/common/configs/environment';
 {{database_module_import_path}}
@@ -11,7 +11,7 @@ import { ENVIRONMENT } from 'src/common/configs/environment';
 export class DatabaseModule {}
 `;
 
-export const MongodbSchema = () => `
+export const MongodbSchema = `
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
