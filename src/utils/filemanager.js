@@ -1,4 +1,5 @@
 import fs from 'fs-extra';
+import * as path from 'path';
 
 export function isDirectoryEmpty(dir) {
   try {
@@ -71,4 +72,56 @@ export function removeFile(filePath) {
   } catch (err) {
     console.error(`Error removing file '${filePath}': ${err}`);
   }
+}
+
+export function removeFolder(folderPath) {
+  try {
+    fs.remove(folderPath);
+    console.log(`Folder '${folderPath}' has been removed successfully.`);
+  } catch (err) {
+    console.error(`Error removing folder '${folderPath}': ${err}`);
+  }
+}
+
+export function writeToFile(filePath, content) {
+  try {
+    fs.writeFileSync(filePath, content, 'utf8');
+    console.log('writeToFile success');
+  } catch (err) {
+    console.log(`writeToFile error ${filePath}, error: ${err}`);
+  }
+}
+
+export async function copyFile(source, destination) {
+  // destination = path.join(process.cwd(), destination);
+  await fs.copySync(source, destination, {
+    filter: (src, dest) => {
+      const relativePath = path.relative(source, src);
+
+      if (relativePath.startsWith('node_modules')) {
+        return false;
+      }
+
+      return true;
+    }
+  });
+}
+
+export function createAndUpdateFile(path, content) {
+  // fs.writeFile(path, content, (err) => {
+  //   if (err) {
+  //     console.log(`createAndUpdateFile err : ${er}`);
+  //   } else {
+  //     console.log(`createAndUpdateFile success`);
+  //   }
+  // });
+
+  fs.outputFile(path, content, (err) => {
+    if (err) return console.log(err);
+
+    console.log('Data successfully written onto the file');
+    console.log('Written data is: ');
+    //   Reading data after writing on file
+    console.log(fs.readFileSync(path, 'utf-8'));
+  });
 }

@@ -9,7 +9,17 @@ import { fileURLToPath } from 'url';
 import simpleGit from 'simple-git';
 // import chalk from 'chalk';
 import useGradient from './src/utils/useGradient.js';
-import { emptyDirectory, removeFile } from './src/utils/filemanager.js';
+import {
+  copyFile,
+  createAndUpdateFile,
+  emptyDirectory,
+  removeFile,
+  removeFolder,
+  writeToFile
+} from './src/utils/filemanager.js';
+import { DATABASE_MODULE } from './templates/backend/nestjs/base/databases.js';
+import { MongodbDatabaseConfig } from './src/utils/nestjs/database.js';
+import { createBackendProject } from './src/utils/create-backend-project.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -129,133 +139,6 @@ program.parse(process.argv);
 //   await copyTemplateFiles(projectName, templateDir, initGit, framework);
 // }
 
-// async function promptProjectName() {
-//   const ans = await inquirer.prompt([
-//     {
-//       type: 'input',
-//       name: 'projectName',
-//       message: 'Enter project name:'
-//     }
-//   ]);
-
-//   return ans.projectName;
-// }
-
-// async function promptProjectStack() {
-//   const ans = await inquirer.prompt([
-//     {
-//       type: 'list',
-//       name: 'projectStack',
-//       message: 'Choose your stack:',
-//       choices: ['Frontend', 'Backend']
-//     }
-//   ]);
-
-//   return ans.projectStack.toLowerCase();
-// }
-
-// async function promptFrontendFramework() {
-//   const ans = await inquirer.prompt([
-//     {
-//       type: 'list',
-//       name: 'framework',
-//       message: 'Choose a framework:',
-//       choices: ['ReactJs']
-//     }
-//   ]);
-
-//   return ans.framework.toLowerCase().replace(/ /g, '-');
-// }
-
-// async function promptBackendFramework() {
-//   const ans = await inquirer.prompt([
-//     {
-//       type: 'list',
-//       name: 'framework',
-//       message: 'Choose a framework:',
-//       choices: ['NestJS', 'ExpressJs']
-//     }
-//   ]);
-
-//   return ans.framework.toLowerCase().replace(/ /g, '-');
-// }
-
-// async function promptDatabase() {
-//   const ans = await inquirer.prompt([
-//     {
-//       type: 'list',
-//       name: 'database',
-//       message: 'select a database',
-//       choices: ['MongoDB', 'PostgreSQL', 'MySQL']
-//     }
-//   ]);
-
-//   return ans.database.toLowerCase();
-// }
-
-// async function promptInitDatabase() {
-//   const ans = await inquirer.prompt([
-//     {
-//       type: 'confirm',
-//       name: 'initDB',
-//       message: 'Initialize Database?',
-//       default: false
-//     }
-//   ]);
-
-//   return ans.initDB;
-// }
-
-// async function getInitGit() {
-//   const ans = await inquirer.prompt([
-//     {
-//       type: 'confirm',
-//       name: 'initGitRepo',
-//       message: 'Initialize a Git repository?',
-//       default: false
-//     }
-//   ]);
-
-//   return ans.initGitRepo;
-// }
-
-// async function promptProjectType() {
-//   const ans = await inquirer.prompt([
-//     {
-//       type: 'list',
-//       name: 'projectComplexity',
-//       description: 'this is a test desc',
-//       message: 'select project complexity',
-//       choices: ['basic', 'advanced']
-//     }
-//   ]);
-
-//   return ans.projectComplexity;
-// }
-
-// async function promptOrm(database) {
-//   database = database?.toLowerCase() ?? '';
-//   console.log('--database', database);
-//   let ormChoices = [];
-
-//   if (database === 'mongodb') {
-//     ormChoices = ['Mongoose'];
-//   } else {
-//     ormChoices = ['Typeorm'];
-//   }
-
-//   const ans = await inquirer.prompt([
-//     {
-//       type: 'list',
-//       name: 'database',
-//       message: 'select your preferred ORM',
-//       choices: ormChoices
-//     }
-//   ]);
-
-//   return ans.database.toLowerCase();
-// }
-
 // function renderTitle() {
 //   const figletConfig = {
 //     font: 'big',
@@ -270,26 +153,53 @@ program.parse(process.argv);
 //   });
 // }
 
-// async function copyTemplateFiles(projectName, templateDir, initGit, framework) {
-//   // Copy the template files to the destination directory
-//   const destinationDir = path.join(
-//     process.cwd(),
-//     projectName ? projectName : `project-starter-${framework}-template`
-//   );
+async function copyTemplateFiles(projectName, templateDir, initGit, framework) {
+  // Copy the template files to the destination directory
+  const destinationDir = path.join(
+    process.cwd(),
+    projectName ? projectName : `project-starter-${framework}-template`
+  );
 
-//   await fs.copy(templateDir, destinationDir);
+  console.log(destinationDir);
 
-//   if (initGit) {
-//     const git = simpleGit(destinationDir);
-//     await git.init();
-//   }
+  return;
 
-//   console.log(`Generated ${framework} project in ${destinationDir}`);
-// }
+  await fs.copy(templateDir, destinationDir);
+
+  if (initGit) {
+    const git = simpleGit(destinationDir);
+    await git.init();
+  }
+
+  console.log(`Generated ${framework} project in ${destinationDir}`);
+}
 
 /**
  * This is to test programs
  */
-function startProject() {
-  removeFile('')
+async function startProject() {
+  // removeFolder(
+  //   '/Users/jccoder/Documents/projects/tool/project-starter-cli/test-project/src/module/v1/newdb'
+  // );
+
+  // await copyFile(
+  //   '/Users/jccoder/Documents/projects/tool/project-starter-cli/templates/backend/nestjs/nestjs', 'test-project'
+  // );
+
+  // await writeToFile(
+  //   '/Users/jccoder/Documents/projects/tool/project-starter-cli/test-project/src/module/v1/database/database.module.ts',
+  //   MongodbDatabaseConfig()
+  // );
+
+  // await createBackendProject(
+  //   '/Users/jccoder/Documents/projects/tool/project-starter-cli/test-project',
+  //   'simple-projecttttt',
+  //   'nestjs',
+  //   'mongodb',
+  //   'mongoose'
+  // );
+
+  createAndUpdateFile(
+    `/Users/jccoder/Documents/projects/tool/project-starter-cli/file.txt`, 'sample content'
+  );
 }
