@@ -44,7 +44,7 @@ export async function createBackendProject(
       copyFile(getTemplateDir('backend/nestjs/nestjs-temp'), destinationPath);
 
       // add config file
-      createAndUpdateFile(
+      writeToFile(
         `${destinationPath}/src/common/configs/environment.ts`,
         ENVIRONMENT_TEMPLATE
       );
@@ -73,8 +73,10 @@ export async function createBackendProject(
                 };
 
                 // update environment
-                environmentInterface += `hello: string`;
-                environmentContent += `hello: 'world'`;
+                environmentInterface += `\nDB: {
+    URL: string;}`;
+                environmentContent += `\n  DB: {
+    URL: process.env.DB_URL,}`;
 
                 // update app module
                 appModules += 'DatabaseModule';
@@ -100,8 +102,6 @@ export async function createBackendProject(
             new_modules: appModules
           }
         );
-
-        console.log({ environmentInterface, environmentContent });
 
         // update environment config file
         updateFileContent(
