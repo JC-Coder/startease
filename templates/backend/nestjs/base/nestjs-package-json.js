@@ -1,4 +1,4 @@
-export const PACKAGE_JSON = {
+export const NEST_PACKAGE_JSON = {
     name: 'nest-typescript-starter',
     private: true,
     version: '1.0.0',
@@ -69,7 +69,7 @@ export const PACKAGE_JSON = {
 };
 
 
-export const MONGOOSE_PACKAGE = {
+export const NEST_MONGOOSE_PACKAGE = {
     "dependencies": {
         "@nestjs/mongoose": "^10.0.1",
         "mongoose": "^7.5.2",

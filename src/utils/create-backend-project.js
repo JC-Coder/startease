@@ -2,6 +2,7 @@ import { MongodbDatabaseConfig } from './nestjs/database.js';
 import {
   copyFile,
   createAndUpdateFile,
+  getTemplateDir,
   removeFile,
   removeFolder,
   updateFileContent,
@@ -9,84 +10,120 @@ import {
 } from './filemanager.js';
 import { AppModuleContent } from '../../templates/backend/nestjs/base/app-module.js';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import { program } from 'commander';
-import fs from 'fs-extra';
 import { MongodbSchema } from '../../templates/backend/nestjs/base/databases.js';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-program.parse(process.argv);
-
-const getTemplateDir = (filePath) => {
-  return path.join(__dirname, '..', '../templates', filePath);
-};
+import {
+  NEST_MONGOOSE_PACKAGE,
+  NEST_PACKAGE_JSON
+} from '../../templates/backend/nestjs/base/nestjs-package-json.js';
+import { ENVIRONMENT_TEMPLATE } from '../../templates/backend/nestjs/base/environment.js';
 
 export async function createBackendProject(
-  destination,
   projectName,
   framework,
   database,
   orm
 ) {
-  console.log('creating backend project');
-  const destinationPath = path.join(process.cwd(), projectName ?? `project-starter-${framework}-template`);
+  try {
+    console.log('creating backend project');
+    const destinationPath = path.join(
+      process.cwd(),
+      projectName ?? `project-starter-${framework}-template`
+    );
 
-  console.log('destinationPath', destinationPath);
+    // update app module file content
+    writeToFile(`${destinationPath}/src/app.module.ts`, AppModuleContent);
 
-  if (framework == 'nestjs') {
-    let appModules = '';
-    let appModuleImports = '';
+    if (framework === 'nestjs') {
+      let appModules = '';
+      let appModuleImports = '';
+      let packageJson = NEST_PACKAGE_JSON;
+      let environmentInterface = '';
+      let environmentContent = '';
 
-    // copy nestjs template to directory
-    copyFile(getTemplateDir('backend/nestjs/nestjs'), destinationPath);
+      // copy nestjs template to directory
+      copyFile(getTemplateDir('backend/nestjs/nestjs-temp'), destinationPath);
 
-    if (database) {
-      switch (database) {
-        case 'mongodb':
-          switch (orm) {
-            case 'mongoose':
-              // write db config
-              writeToFile(
-                `${destinationPath}/src/module/v1/database/database.module.ts`,
-                MongodbDatabaseConfig
-              );
+      // add config file
+      createAndUpdateFile(
+        `${destinationPath}/src/common/configs/environment.ts`,
+        ENVIRONMENT_TEMPLATE
+      );
 
-              // create sample schema file for db
-              createAndUpdateFile(
-                `${destinationPath}/src/module/v1/database/sample.schema.ts`,
-                MongodbSchema
-              );
+      if (database) {
+        switch (database) {
+          case 'mongodb':
+            switch (orm) {
+              case 'mongoose':
+                // write db config
+                createAndUpdateFile(
+                  `${destinationPath}/src/module/v1/database/database.module.ts`,
+                  MongodbDatabaseConfig
+                );
 
-              appModules += 'DatabaseModule';
-              appModuleImports +=
-                'import { DatabaseModule } from "./module/v1/database/database.module";';
-              break;
+                // create sample schema file for db
+                createAndUpdateFile(
+                  `${destinationPath}/src/module/v1/database/sample.schema.ts`,
+                  MongodbSchema
+                );
+
+                // add mongoose dependencies
+                packageJson.dependencies = {
+                  ...packageJson.dependencies,
+                  ...NEST_MONGOOSE_PACKAGE.dependencies
+                };
+
+                // update environment
+                environmentInterface += `hello: string`;
+                environmentContent += `hello: 'world'`;
+
+                // update app module
+                appModules += 'DatabaseModule';
+                appModuleImports +=
+                  'import { DatabaseModule } from "./module/v1/database/database.module";';
+                break;
+              default:
+                packageJson.dependencies = {
+                  ...packageJson.dependencies,
+                  ...NEST_PACKAGE_JSON.dependencies
+                };
+                break;
+            }
+            break;
+        }
+
+        // update app module
+        updateFileContent(
+          `${destinationPath}/src/app.module.ts`,
+          AppModuleContent,
+          {
+            new_modules_path: appModuleImports,
+            new_modules: appModules
           }
-          break;
+        );
+
+        console.log({ environmentInterface, environmentContent });
+
+        // update environment config file
+        updateFileContent(
+          `${destinationPath}/src/common/configs/environment.ts`,
+          ENVIRONMENT_TEMPLATE,
+          {
+            environment_interface: environmentInterface,
+            environment_content: environmentContent
+          }
+        );
       }
 
-      // update app module
-      updateFileContent(
-        `${destinationPath}/src/app.module.ts`,
-        AppModuleContent,
-        {
-          database_module_path: appModuleImports,
-          database_module: appModules
-        }
+      // update packageJsonFile
+      createAndUpdateFile(
+        `${destinationPath}/package.json`,
+        JSON.stringify(packageJson)
       );
-    } else {
-      // removeFolder(`${destination}/src/module/v1/testdb`);
-    }
 
-    // if (database && database == 'mongodb') {
-    //   if (orm === 'mongoose') {
-    //     writeToFile(destination, MongodbDatabaseConfig());
-    //     appModules += ',DatabaseModule';
-    //     appModuleImports +=
-    //       'import { DatabaseModule } from "./module/v1/database/database.module";';
-    //   }
-    // }
+      // success message
+      console.log(`Backend project created successfully! : ${destinationPath}`);
+    }
+  } catch (e) {
+    console.log(`Error Creating Backend Project: ${e}`);
   }
 }

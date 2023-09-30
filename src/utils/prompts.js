@@ -1,6 +1,6 @@
 import inquirer from 'inquirer';
 
-async function promptProjectName() {
+export async function promptProjectName() {
   const ans = await inquirer.prompt([
     {
       type: 'input',
@@ -12,7 +12,7 @@ async function promptProjectName() {
   return ans.projectName;
 }
 
-async function promptProjectStack() {
+export async function promptProjectStack() {
   const ans = await inquirer.prompt([
     {
       type: 'list',
@@ -25,7 +25,7 @@ async function promptProjectStack() {
   return ans.projectStack.toLowerCase();
 }
 
-async function promptFrontendFramework() {
+export async function promptFrontendFramework() {
   const ans = await inquirer.prompt([
     {
       type: 'list',
@@ -38,7 +38,7 @@ async function promptFrontendFramework() {
   return ans.framework.toLowerCase().replace(/ /g, '-');
 }
 
-async function promptBackendFramework() {
+export async function promptBackendFramework() {
   const ans = await inquirer.prompt([
     {
       type: 'list',
@@ -51,7 +51,7 @@ async function promptBackendFramework() {
   return ans.framework.toLowerCase().replace(/ /g, '-');
 }
 
-async function promptDatabase() {
+export async function promptDatabase() {
   const ans = await inquirer.prompt([
     {
       type: 'list',
@@ -64,7 +64,7 @@ async function promptDatabase() {
   return ans.database.toLowerCase();
 }
 
-async function promptInitDatabase() {
+export async function promptInitDatabase() {
   const ans = await inquirer.prompt([
     {
       type: 'confirm',
@@ -77,7 +77,7 @@ async function promptInitDatabase() {
   return ans.initDB;
 }
 
-async function getInitGit() {
+export async function getInitGit() {
   const ans = await inquirer.prompt([
     {
       type: 'confirm',
@@ -90,7 +90,7 @@ async function getInitGit() {
   return ans.initGitRepo;
 }
 
-async function promptProjectType() {
+export async function promptProjectType() {
   const ans = await inquirer.prompt([
     {
       type: 'list',
@@ -104,7 +104,7 @@ async function promptProjectType() {
   return ans.projectComplexity;
 }
 
-async function promptOrm(database) {
+export async function promptOrm(database) {
   database = database?.toLowerCase() ?? '';
   console.log('--database', database);
   let ormChoices = [];

@@ -1,4 +1,4 @@
-export const ENVIRONMENT = () => `
+export const ENVIRONMENT_TEMPLATE = `
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -8,14 +8,7 @@ export interface IEnvironment {
     PORT: number | string;
     ENV: string;
   };
-  DB: {
-    URL: string;
-    NAME: string;
-    USER: string;
-    PASSWORD: string;
-    PORT: number;
-    HOST: string;
-  };
+ {{environment_interface}}
 }
 
 export const ENVIRONMENT: IEnvironment = {
@@ -24,13 +17,6 @@ export const ENVIRONMENT: IEnvironment = {
     PORT: process.env.APP_PORT,
     ENV: process.env.APP_ENV,
   },
-  DB: {
-    URL: process.env.DB_URL,
-    NAME: process.env.DB_NAME,
-    USER: process.env.DB_USER,
-    PASSWORD: process.env.DB_PASSWORD,
-    PORT: +process.env.DB_PORT,
-    HOST: process.env.DB_HOST,
-  },
+ {{environment_content}}
 };
 `
