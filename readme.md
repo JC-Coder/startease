@@ -84,7 +84,6 @@ We appreciate your interest in contributing to our project. Whether you want to 
   - [Making Changes](#making-changes)
   - [Running Tests](#running-tests)
   - [Creating Pull Requests](#creating-pull-requests)
-3. [Code Style](#code-style)
 4. [License](#license)
 
 
