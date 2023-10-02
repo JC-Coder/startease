@@ -2,6 +2,8 @@
 
 StartEase is a command-line interface (CLI) tool designed to make project setup a breeze. Whether you're working with your favorite technologies or exploring new ones, StartEase is your companion for quickly and effortlessly scaffolding projects.
 
+![StartEase Logo](./assets/start-ease.png)
+
 ## Features
 
 - **Effortless Scaffolding**: StartEase streamlines project creation and technology scaffolding, providing a smooth and efficient experience for developers.
@@ -91,7 +93,7 @@ We appreciate your interest in contributing to our project. Whether you want to 
 
 ### Reporting Bugs
 
-If you encounter a bug or unexpected behavior in StartEase, please [open an issue](https://github.com/yourusername/startease/issues/new) and provide the following information:
+If you encounter a bug or unexpected behavior in StartEase, please [open an issue](https://github.com/JC-Coder/startease/issues/new) and provide the following information:
 
 - A clear and descriptive title.
 - A detailed description of the bug, including steps to reproduce it.
@@ -100,7 +102,7 @@ If you encounter a bug or unexpected behavior in StartEase, please [open an issu
 
 ### Suggesting Enhancements
 
-We welcome suggestions for new features or improvements. To suggest an enhancement, [open an issue](https://github.com/yourusername/startease/issues/new) with the following details:
+We welcome suggestions for new features or improvements. To suggest an enhancement, [open an issue](https://github.com/JC-Coder/startease/issues/new) with the following details:
 
 - A clear and concise title.
 - A detailed description of the enhancement or feature request.
@@ -119,14 +121,14 @@ We appreciate contributions that enhance StartEase. To contribute code:
 
 ### Forking the Repository
 
-Click the "Fork" button at the top-right of the [StartEase repository](https://github.com/yourusername/startease) to create a copy of the repository in your GitHub account.
+Click the "Fork" button at the top-right of the [StartEase repository](https://github.com/JC-Coder/startease) to create a copy of the repository in your GitHub account.
 
 ### Setting Up Your Development Environment
 
 1. Clone your forked repository to your local machine:
 
    ```bash
-   git clone https://github.com/yourusername/startease.git
+   git clone https://github.com/JC-Coder/startease.git
    ```
 
 2. Change to the project directory:
@@ -171,7 +173,7 @@ When you're ready to submit your changes:
    git push origin my-feature-branch
    ```
 
-3. Visit the [StartEase repository](https://github.com/yourusername/startease) on GitHub.
+3. Visit the [StartEase repository](https://github.com/JC-Coder/startease) on GitHub.
 
 4. Click the "New Pull Request" button and follow the prompts.
 

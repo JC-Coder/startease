@@ -3,7 +3,7 @@
 
 # NestJs Project
 
-[![StartEase](https://img.shields.io/badge/Generated%20by-StartEase-blue)](https://your-startease-url)
+[![StartEase](https://img.shields.io/badge/Generated%20by-StartEase-blue)](https://github.com/JC-Coder/startease)
 
 ## Overview
 
