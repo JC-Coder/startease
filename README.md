@@ -84,7 +84,7 @@ We appreciate your interest in contributing to our project. Whether you want to 
   - [Making Changes](#making-changes)
   - [Running Tests](#running-tests)
   - [Creating Pull Requests](#creating-pull-requests)
-4. [License](#license)
+3. [License](#license)
 
 
 ## How Can I Contribute?
@@ -154,8 +154,6 @@ Click the "Fork" button at the top-right of the [StartEase repository](https://g
    ```bash
    git checkout -b my-feature-branch
    ```
-
-2. Make your code changes and ensure to follow the [code style](#code-style).
 
 ### Running Tests
 

@@ -1,8 +1,8 @@
-export const NEST_PACKAGE_JSON = {
-    name: 'nest-typescript-starter',
+export const NestjsPackageJsonTemplate = {
+    name: 'startease nestjs project',
     private: true,
     version: '1.0.0',
-    description: 'Nest TypeScript starter repository',
+    description: 'NestJs project generated using startease CLI tool',
     license: 'MIT',
     scripts: {
         build: 'nest build',

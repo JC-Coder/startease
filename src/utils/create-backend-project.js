@@ -11,7 +11,7 @@ import path from 'path';
 import {MongodbDatabaseConfig, MongodbSchema} from '../../templates/backend/nestjs/base/databases.js';
 import {
   NEST_MONGOOSE_PACKAGE,
-  NEST_PACKAGE_JSON
+  NestjsPackageJsonTemplate
 } from '../../templates/backend/nestjs/base/nestjs-package-json.js';
 import { ENVIRONMENT_TEMPLATE } from '../../templates/backend/nestjs/base/environment.js';
 import { EXPRESSJS_SERVER_TEMPLATE } from '../../templates/backend/expressjs/base/server.js';
@@ -57,7 +57,7 @@ export async function createBackendProject(
     if (framework === 'nestjs') {
       let appModules = '';
       let appModuleImports = '';
-      let packageJson = NEST_PACKAGE_JSON;
+      let packageJson = NestjsPackageJsonTemplate;
       let environmentInterface = '';
       let environmentContent = '';
 
@@ -112,33 +112,33 @@ export async function createBackendProject(
               default:
                 packageJson.dependencies = {
                   ...packageJson.dependencies,
-                  ...NEST_PACKAGE_JSON.dependencies
+                  ...NestjsPackageJsonTemplate.dependencies
                 };
                 break;
             }
             break;
         }
+      }
 
-        // update app module
-        updateFileContent(
+      // update app module
+      updateFileContent(
           `${destinationPath}/src/app.module.ts`,
           AppModuleContent,
           {
             new_modules_path: appModuleImports,
             new_modules: appModules
           }
-        );
+      );
 
-        // update environment config file
-        updateFileContent(
+      // update environment config file
+      updateFileContent(
           `${destinationPath}/src/common/configs/environment.ts`,
           ENVIRONMENT_TEMPLATE,
           {
             environment_interface: environmentInterface,
             environment_content: environmentContent
           }
-        );
-      }
+      );
 
       // update packageJsonFile
       createAndUpdateFile(

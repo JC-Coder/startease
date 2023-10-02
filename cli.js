@@ -17,9 +17,9 @@ import {
 
 const toolName = "StartEase";
 
-program.version('1.0.0').description('Project Starter CLI');
+program.version('1.0.0').description('StartEase CLI');
 
-program.description('Generate a starter project').action(async () => {
+program.description('Scaffold a new project with StartEase').action(async () => {
     await startProject();
 });
 
@@ -48,7 +48,7 @@ async function startProject() {
      * start prompts
      */
     if (projectStack === 'frontend') {
-        framework = await promptFrontendFramework();
+        console.log(`Ops, 🚀 Frontend support is coming soon! 🎉`);
     } else if (projectStack === 'backend') {
         framework = await promptBackendFramework();
 
@@ -79,16 +79,4 @@ function renderTitle() {
     useGradient({
         title: figlet.textSync('StartEase', figletConfig)
     });
-}
-
-/**
- * This is to test programs
- */
-async function startProject1() {
-    await createBackendProject(
-        'simple-projecttttt',
-        'expressjs',
-        'mongodb',
-        'mongoose'
-    );
 }

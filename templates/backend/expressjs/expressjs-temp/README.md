@@ -1,7 +1,7 @@
 
 ---
 
-# NestJs Project
+# ExpressJS Project
 
 [![StartEase](https://img.shields.io/badge/Generated%20by-StartEase-blue)](https://your-startease-url)
 
@@ -53,7 +53,7 @@ Replace `YourAppName`, `your-database-url`, `your-database-name`, etc., with you
 Once you've configured your environment variables, you can start your project:
 
 ```bash
-npm run start:dev
+npm run dev
 ```
 
 Your backend server should now be running at http://localhost:<specified-port>.

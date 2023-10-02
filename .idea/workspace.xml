@@ -4,63 +4,59 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fec32945-4147-42d7-8e5d-91fa7dcd7020" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/jccoder.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/project-starter-cli.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/project-starter-cli.iml" afterDir="false" />
+    <list default="true" id="fec32945-4147-42d7-8e5d-91fa7dcd7020" name="Changes" comment="update readme and add license file">
+      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/expressjs-temp/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/project-starter-cli.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cli.js" beforeDir="false" afterPath="$PROJECT_DIR$/cli.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/create-backend-project.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/create-backend-project.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/nestjs/database.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/prompts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/prompts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/useGradient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/useGradient.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/.idea/expressjs.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/common/config/database.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/common/config/environment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/common/utils/appError.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/common/utils/errorHandler.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/common/utils/helper.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/common/utils/logger.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/common/validators/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/modules/controllers/user.controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/modules/routes/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/modules/routes/user.route.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/modules/schemas/user.schema.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjsdb1orm1/src/server.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/base/databases.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/backend/nestjs/base/databases.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/nest-cli.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/src/app.controller.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/src/app.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/src/app.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/src/app.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/src/common/configs/environment.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/src/common/filter/filter.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/src/common/utils/helper.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/src/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/src/module/v1/database/database.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/src/module/v1/database/sample-schema.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/src/module/v1/user/user.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/src/module/v1/user/user.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/src/module/v1/user/user.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/test/app.e2e-spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/test/jest-e2e.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/tsconfig.build.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-backup/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/base/package-json.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/backend/expressjs/base/package-json.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/common/config/database.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/common/config/environment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/common/utils/appError.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/common/utils/errorHandler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/common/utils/helper.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/common/utils/logger.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/common/validators/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/modules/controllers/user.controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/modules/routes/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/modules/routes/user.route.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjs/src/server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/base/nestjs-package-json.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/backend/nestjs/base/nestjs-package-json.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/.eslintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/.prettierrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/nest-cli.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/app.controller.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/app.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/app.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/app.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/common/configs/environment.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/common/filter/filter.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/common/utils/helper.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/module/v1/database/database.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/module/v1/database/sample-schema.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/module/v1/user/user.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/module/v1/user/user.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/src/module/v1/user/user.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/test/app.e2e-spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/test/jest-e2e.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/tsconfig.build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/tsconfig.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +95,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.editor",
-    "ts.external.directory.path": "/Users/jccoder/Documents/projects/tool/project-starter-cli/templates/backend/nestjs/nestjs/node_modules/typescript/lib"
+    "ts.external.directory.path": "/Users/jccoder/Documents/projects/tool/project-starter-cli/src/test/nestjs/node_modules/typescript/lib"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -115,11 +111,33 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1696245963366</updated>
-      <workItem from="1696245966119" duration="3699000" />
+      <workItem from="1696245966119" duration="6687000" />
     </task>
+    <task id="LOCAL-00001" summary="update project and readme">
+      <option name="closed" value="true" />
+      <created>1696251153504</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696251153504</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update readme and add license file">
+      <option name="closed" value="true" />
+      <created>1696251341732</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1696251341732</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update project and readme" />
+    <MESSAGE value="update readme and add license file" />
+    <option name="LAST_COMMIT_MESSAGE" value="update readme and add license file" />
   </component>
 </project>
