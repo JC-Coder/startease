@@ -4,37 +4,17 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23a98b9a-75a0-4ca1-b9f1-7eb61421f677" name="Changes" comment="complete nestjs - mongodb project startup">
+    <list default="true" id="23a98b9a-75a0-4ca1-b9f1-7eb61421f677" name="Changes" comment="complete expressjs  mongodb mongoose feature">
+      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/.idea/expressjs.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/backend/expressjs/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/.idea/nestjs.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/.eslintrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/.prettierrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/nest-cli.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/app.controller.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/app.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/app.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/app.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/common/configs/environment.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/common/filter/filter.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/common/utils/helper.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/module/v1/user/user.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/module/v1/user/user.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/module/v1/user/user.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/test/app.e2e-spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/test/jest-e2e.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/tsconfig.build.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/base/main-file.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/package-backup.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cli.js" beforeDir="false" afterPath="$PROJECT_DIR$/cli.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/create-backend-project.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/create-backend-project.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/prompts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/prompts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/base/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/backend/expressjs/base/database.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/expressjs/expressjs-temp/package-lock.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,6 +117,7 @@
       <workItem from="1695900408568" duration="594000" />
       <workItem from="1695992208902" duration="6731000" />
       <workItem from="1696101207854" duration="335000" />
+      <workItem from="1696237481467" duration="1791000" />
     </task>
     <task id="LOCAL-00001" summary="update project &#10;- add base expressjs template &#10;- add expressjsdb1orm1 template">
       <option name="closed" value="true" />
@@ -154,7 +135,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696101314854</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="complete expressjs  mongodb mongoose feature">
+      <option name="closed" value="true" />
+      <created>1696237645674</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696237645674</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +153,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="update project &#10;- add base expressjs template &#10;- add expressjsdb1orm1 template" />
     <MESSAGE value="complete nestjs - mongodb project startup" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete nestjs - mongodb project startup" />
+    <MESSAGE value="complete expressjs  mongodb mongoose feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="complete expressjs  mongodb mongoose feature" />
   </component>
 </project>

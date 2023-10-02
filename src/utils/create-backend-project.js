@@ -4,8 +4,6 @@ import {
   createAndUpdateFile,
   createFolder,
   getTemplateDir,
-  removeFile,
-  removeFolder,
   updateFileContent,
   writeToFile
 } from './filemanager.js';
@@ -19,10 +17,31 @@ import {
 import { ENVIRONMENT_TEMPLATE } from '../../templates/backend/nestjs/base/environment.js';
 import { EXPRESSJS_SERVER_TEMPLATE } from '../../templates/backend/expressjs/base/server.js';
 import {
-  EXPRESSJS_MONGOOSE_DATABASE_TEMPLATE,
+  ExpressJsMongodbMongooseConnectionTemplate,
   ExpressJsMongoDbMongooseSampleSchema
 } from '../../templates/backend/expressjs/base/database.js';
 import { ExpressJsPackageJsonTemplate } from '../../templates/backend/expressjs/base/package-json.js';
+import { ExpressJsEnvironmentTemplate } from '../../templates/backend/expressjs/base/config.js';
+import ora from 'ora';
+
+/**
+ * loader
+ */
+let stages = [{ message: 'Creating Project ...', duration: 2000 }];
+
+async function startSpinner() {
+  for (const stage of stages) {
+    const spinner = ora(stage.message).start();
+    await new Promise((resolve) => setTimeout(resolve, stage.duration));
+    spinner.succeed(stage.message.replace('...', ' completed.'));
+  }
+
+  stages = [{ message: 'Creating Project ...', duration: 2000 }];
+}
+
+/**
+ * function to create backend projects
+ */
 
 export async function createBackendProject(
   projectName,
@@ -31,14 +50,10 @@ export async function createBackendProject(
   orm
 ) {
   try {
-    console.log('creating backend project');
     const destinationPath = path.join(
       process.cwd(),
       projectName ?? `project-starter-${framework}-template`
     );
-
-    // update app module file content
-    writeToFile(`${destinationPath}/src/app.module.ts`, AppModuleContent);
 
     if (framework === 'nestjs') {
       let appModules = '';
@@ -50,6 +65,9 @@ export async function createBackendProject(
       // copy nestjs template to directory
       copyFile(getTemplateDir('backend/nestjs/nestjs-temp'), destinationPath);
 
+      // update app module file content
+      writeToFile(`${destinationPath}/src/app.module.ts`, AppModuleContent);
+
       // add environment file
       writeToFile(
         `${destinationPath}/src/common/configs/environment.ts`,
@@ -57,6 +75,8 @@ export async function createBackendProject(
       );
 
       if (database) {
+        stages.push({ message: 'Adding Database Module ...', duration: 1000 });
+
         switch (database) {
           case 'mongodb':
             switch (orm) {
@@ -128,7 +148,12 @@ export async function createBackendProject(
       );
 
       // success message
-      console.log(`Backend project created successfully! : ${destinationPath}`);
+      stages.push({
+        message: `Backend project created successfully! : ${destinationPath}`,
+        duration: 1000
+      });
+
+      await startSpinner();
     } else if (framework === 'expressjs') {
       let database_config = '';
       let database_config_import = '';
@@ -148,6 +173,8 @@ export async function createBackendProject(
       );
 
       if (database) {
+        stages.push({ message: 'Adding Database Module ...', duration: 1000 });
+
         // create schema folder
         createFolder(`${destinationPath}/src/modules/schemas`);
 
@@ -159,7 +186,7 @@ export async function createBackendProject(
                 // create db config file
                 createAndUpdateFile(
                   `${destinationPath}/src/common/config/database.js`,
-                  EXPRESSJS_SERVER_TEMPLATE
+                  ExpressJsMongodbMongooseConnectionTemplate
                 );
 
                 // create sample schema file
@@ -177,6 +204,11 @@ export async function createBackendProject(
                   ...packageJson.dependencies,
                   mongoose: '^7.5.2'
                 };
+
+                // update db config
+                additional_environment_variables += `DB: {
+                    URL: process.env.DB_URL
+                }`;
             }
         }
       }
@@ -191,6 +223,13 @@ export async function createBackendProject(
         }
       );
 
+      // add and update config file
+      updateFileContent(
+        `${destinationPath}/src/common/config/environment.js`,
+        ExpressJsEnvironmentTemplate,
+        { additional_environment_variables }
+      );
+
       // add package json file
       createAndUpdateFile(
         `${destinationPath}/package.json`,
@@ -198,7 +237,12 @@ export async function createBackendProject(
       );
 
       // success message
-      console.log(`Backend project created successfully! : ${destinationPath}`);
+      stages.push({
+        message: `Backend project created successfully! : ${destinationPath}`,
+        duration: 1000
+      });
+
+      await startSpinner();
     }
   } catch (e) {
     console.log(`Error Creating Backend Project: ${e}`);

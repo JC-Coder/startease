@@ -1,4 +1,4 @@
-ExpressJsEnvironmentTemplate = `
+export const ExpressJsEnvironmentTemplate = `
 import * as dotenv from 'dotenv';
 dotenv.config()
 

@@ -1,4 +1,4 @@
-export const EXPRESSJS_MONGOOSE_DATABASE_TEMPLATE = `
+export const ExpressJsMongodbMongooseConnectionTemplate = `
 import mongoose from 'mongoose';
 import { ENVIRONMENT } from './environment';
 

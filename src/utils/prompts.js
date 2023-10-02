@@ -90,20 +90,6 @@ export async function getInitGit() {
   return ans.initGitRepo;
 }
 
-export async function promptProjectType() {
-  const ans = await inquirer.prompt([
-    {
-      type: 'list',
-      name: 'projectComplexity',
-      description: 'this is a test desc',
-      message: 'select project complexity',
-      choices: ['basic', 'advanced']
-    }
-  ]);
-
-  return ans.projectComplexity;
-}
-
 export async function promptOrm(database) {
   database = database?.toLowerCase() ?? '';
   console.log('--database', database);
