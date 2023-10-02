@@ -4,37 +4,37 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23a98b9a-75a0-4ca1-b9f1-7eb61421f677" name="Changes" comment="update project &#10;- add base expressjs template &#10;- add expressjsdb1orm1 template">
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/.eslintrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/nest-cli.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/src/app.controller.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/src/app.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/src/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/src/app.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/src/common/configs/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/src/common/filter/filter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/src/common/utils/helper.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/src/module/v1/user/user.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/src/module/v1/user/user.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/src/module/v1/user/user.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/test/app.e2e-spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/test/jest-e2e.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/tsconfig.build.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs-temp/tsconfig.json" afterDir="false" />
+    <list default="true" id="23a98b9a-75a0-4ca1-b9f1-7eb61421f677" name="Changes" comment="complete nestjs - mongodb project startup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cli.js" beforeDir="false" afterPath="$PROJECT_DIR$/cli.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/create-backend-project.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/create-backend-project.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/filemanager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/filemanager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/prompts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/prompts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/base/app-module.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/backend/nestjs/base/app-module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/base/package-json.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/backend/nestjs/base/nestjs-package-json.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/package-backup.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/.idea/nestjs.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/.eslintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/.prettierrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/nest-cli.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/app.controller.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/app.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/app.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/app.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/common/configs/environment.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/common/filter/filter.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/common/utils/helper.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/module/v1/user/user.controller.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/module/v1/user/user.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/src/module/v1/user/user.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/test/app.e2e-spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/test/jest-e2e.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/tsconfig.build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/backup-base/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/base/main-file.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/package-backup.json" beforeDir="false" afterPath="$PROJECT_DIR$/templates/backend/nestjs/nestjs/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,30 +69,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "master",
-    "javascript.nodejs.core.library.configured.version": "16.20.2",
-    "javascript.nodejs.core.library.typings.version": "16.18.54",
-    "last_opened_file_path": "/Users/jccoder/Documents/projects/tool/project-starter-cli",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettier.import.notification.dismissed": "true",
-    "prettierjs.PrettierConfiguration.Package": "/Users/jccoder/Documents/projects/tool/project-starter-cli/templates/backend/nestjs/nestjs/node_modules/prettier",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.20.2&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.54&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jccoder/Documents/projects/tool/project-starter-cli&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettier.import.notification.dismissed&quot;: &quot;true&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/jccoder/Documents/projects/tool/project-starter-cli/templates/backend/nestjs/nestjs/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/templates/backend/nestjs/base" />
@@ -136,6 +136,7 @@
       <workItem from="1695828913365" duration="1702000" />
       <workItem from="1695900408568" duration="594000" />
       <workItem from="1695992208902" duration="6731000" />
+      <workItem from="1696101207854" duration="335000" />
     </task>
     <task id="LOCAL-00001" summary="update project &#10;- add base expressjs template &#10;- add expressjsdb1orm1 template">
       <option name="closed" value="true" />
@@ -145,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1694980166529</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="complete nestjs - mongodb project startup">
+      <option name="closed" value="true" />
+      <created>1696101314854</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1696101314854</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,6 +163,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="update project &#10;- add base expressjs template &#10;- add expressjsdb1orm1 template" />
-    <option name="LAST_COMMIT_MESSAGE" value="update project &#10;- add base expressjs template &#10;- add expressjsdb1orm1 template" />
+    <MESSAGE value="complete nestjs - mongodb project startup" />
+    <option name="LAST_COMMIT_MESSAGE" value="complete nestjs - mongodb project startup" />
   </component>
 </project>

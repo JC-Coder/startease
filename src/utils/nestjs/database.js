@@ -8,3 +8,5 @@ import { ENVIRONMENT } from 'src/common/configs/environment';
 })
 export class DatabaseModule {}
 `;
+
+

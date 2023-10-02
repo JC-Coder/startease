@@ -45,7 +45,7 @@ program.description('Generate a starter project').action(async () => {
 
 program.parse(process.argv);
 
-async function startProject2() {
+async function startProject() {
   let framework;
   let projectName;
   let projectStack;
@@ -54,7 +54,6 @@ async function startProject2() {
   let database;
   let orm;
   let templateDir;
-  let templatePathSuffix = ''; // this will hold the path to the path to the template folder
 
   const initialMsg = `\n Effortlessly Scaffold Any Project with ${chalk.green(
     'project-starter'
@@ -145,7 +144,7 @@ function renderTitle() {
 /**
  * This is to test programs
  */
-async function startProject() {
+async function startProject2() {
   // removeFolder(
   //   '/Users/jccoder/Documents/projects/tool/project-starter-cli/test-project/src/module/v1/newdb'
   // );
@@ -161,7 +160,7 @@ async function startProject() {
 
   await createBackendProject(
     'simple-projecttttt',
-    'nestjs',
+    'expressjs',
     'mongodb',
     'mongoose'
   );

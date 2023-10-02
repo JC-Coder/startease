@@ -7,6 +7,7 @@ import cors from "cors";
 import helmet from "helmet";
 import {stream} from "./common/utils/logger.js";
 import morgan from 'morgan'
+import { connectDb } from "./common/config/database.js";
 
 /**
  * Default app configurations
@@ -70,6 +71,7 @@ app.get("*", (req, res) =>
  * Bootstrap server
  */
 const server = app.listen(port, () => {
+    connectDb()
         console.log(`=> ${appName} app listening on port ${port}!`)
     }
 );

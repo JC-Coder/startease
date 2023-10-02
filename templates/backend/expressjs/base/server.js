@@ -1,3 +1,4 @@
+export const EXPRESSJS_SERVER_TEMPLATE =  `
 import {ENVIRONMENT} from "./common/config/environment.js";
 import express from 'express';
 import AppError from "./common/utils/appError.js";
@@ -7,6 +8,7 @@ import cors from "cors";
 import helmet from "helmet";
 import {stream} from "./common/utils/logger.js";
 import morgan from 'morgan'
+{{database_config_import}}
 
 /**
  * Default app configurations
@@ -67,12 +69,11 @@ app.get("*", (req, res) =>
 
 
 /**
- * Graceful shutdown
+ * Bootstrap server
  */
-process.on("SIGTERM", () => {
-    console.info("SIGTERM signal received.");
-    console.log("Closing http server.");
-    server.close(() => {
-        console.log("Http server closed.");
-    });
-});
+app.listen(port, () => {
+        console.log('=> ' + appName + 'app listening on port' + port +'!')
+        {{database_config}}
+    }
+);
+`

@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
+import { ENVIRONMENT } from "../config/environment.js";
 
 export const connectDb = async () => {
     try {
-        const conn = await mongoose.connect(process.env.DB_URL, {
+        const conn = await mongoose.connect(ENVIRONMENT.DB.URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });

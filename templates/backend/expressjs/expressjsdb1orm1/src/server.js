@@ -69,7 +69,7 @@ app.get("*", (req, res) =>
 /**
  * Bootstrap server
  */
-const server = app.listen(port, () => {
+app.listen(port, () => {
         console.log(`=> ${appName} app listening on port ${port}!`)
          connectDb() // connect to database
     }

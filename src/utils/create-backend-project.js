@@ -2,6 +2,7 @@ import { MongodbDatabaseConfig } from './nestjs/database.js';
 import {
   copyFile,
   createAndUpdateFile,
+  createFolder,
   getTemplateDir,
   removeFile,
   removeFolder,
@@ -16,6 +17,12 @@ import {
   NEST_PACKAGE_JSON
 } from '../../templates/backend/nestjs/base/nestjs-package-json.js';
 import { ENVIRONMENT_TEMPLATE } from '../../templates/backend/nestjs/base/environment.js';
+import { EXPRESSJS_SERVER_TEMPLATE } from '../../templates/backend/expressjs/base/server.js';
+import {
+  EXPRESSJS_MONGOOSE_DATABASE_TEMPLATE,
+  ExpressJsMongoDbMongooseSampleSchema
+} from '../../templates/backend/expressjs/base/database.js';
+import { ExpressJsPackageJsonTemplate } from '../../templates/backend/expressjs/base/package-json.js';
 
 export async function createBackendProject(
   projectName,
@@ -43,7 +50,7 @@ export async function createBackendProject(
       // copy nestjs template to directory
       copyFile(getTemplateDir('backend/nestjs/nestjs-temp'), destinationPath);
 
-      // add config file
+      // add environment file
       writeToFile(
         `${destinationPath}/src/common/configs/environment.ts`,
         ENVIRONMENT_TEMPLATE
@@ -118,6 +125,76 @@ export async function createBackendProject(
       createAndUpdateFile(
         `${destinationPath}/package.json`,
         JSON.stringify(packageJson)
+      );
+
+      // success message
+      console.log(`Backend project created successfully! : ${destinationPath}`);
+    } else if (framework === 'expressjs') {
+      let database_config = '';
+      let database_config_import = '';
+      let additional_environment_variables = '';
+      let packageJson = ExpressJsPackageJsonTemplate;
+
+      // copy expressjs template to directory
+      copyFile(
+        getTemplateDir('backend/expressjs/expressjs-temp'),
+        destinationPath
+      );
+
+      // add server.js file
+      writeToFile(
+        `${destinationPath}/src/server.js`,
+        EXPRESSJS_SERVER_TEMPLATE
+      );
+
+      if (database) {
+        // create schema folder
+        createFolder(`${destinationPath}/src/modules/schemas`);
+
+        switch (database) {
+          case 'mongodb':
+            switch (orm) {
+              case 'mongoose':
+              default:
+                // create db config file
+                createAndUpdateFile(
+                  `${destinationPath}/src/common/config/database.js`,
+                  EXPRESSJS_SERVER_TEMPLATE
+                );
+
+                // create sample schema file
+                createAndUpdateFile(
+                  `${destinationPath}/src/modules/schemas/sample.schema.js`,
+                  ExpressJsMongoDbMongooseSampleSchema
+                );
+
+                // update database config for server js file
+                database_config_import = `import { connectDb } from "./common/config/database.js";`;
+                database_config = ` connectDb()`;
+
+                // update packageJson
+                packageJson.dependencies = {
+                  ...packageJson.dependencies,
+                  mongoose: '^7.5.2'
+                };
+            }
+        }
+      }
+
+      // update server template
+      updateFileContent(
+        `${destinationPath}/src/server.js`,
+        EXPRESSJS_SERVER_TEMPLATE,
+        {
+          database_config,
+          database_config_import
+        }
+      );
+
+      // add package json file
+      createAndUpdateFile(
+        `${destinationPath}/package.json`,
+        JSON.stringify(ExpressJsPackageJsonTemplate)
       );
 
       // success message

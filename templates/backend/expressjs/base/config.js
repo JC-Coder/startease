@@ -1,3 +1,4 @@
+ExpressJsEnvironmentTemplate = `
 import * as dotenv from 'dotenv';
 dotenv.config()
 
@@ -7,7 +8,6 @@ export const ENVIRONMENT = {
         PORT: process.env.PORT || 3000,
         ENV: process.env.APP_ENV
     },
-    DB: {
-        URL: process.env.DB_URL
-    }
+    {{additional_environment_variables}}
 }
+`;
