@@ -2,7 +2,8 @@
 
 StartEase is a command-line interface (CLI) tool designed to make project setup a breeze. Whether you're working with your favorite technologies or exploring new ones, StartEase is your companion for quickly and effortlessly scaffolding projects.
 
-![StartEase Logo](./assets/start-ease.png)
+<img width="1248" alt="start-ease" src="https://github.com/JC-Coder/startease/assets/99423608/e7da3f92-4841-49da-bbfc-d42a162a5f37">
+
 
 ## Features
 
