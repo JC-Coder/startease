@@ -19,12 +19,12 @@ You can install StartEase using either `npm` or `yarn`. Choose your preferred pa
 **Using npm:**
 
 ```bash
-npm install -g startease
+npm install -g startease-cli
 ```
 **Using yarn:**
 
 ```bash
-yarn global add startease
+yarn global add startease-cli
 ```
 
 ## Usage 🚦
