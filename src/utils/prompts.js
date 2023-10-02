@@ -57,7 +57,7 @@ export async function promptDatabase() {
       type: 'list',
       name: 'database',
       message: 'select a database',
-      choices: ['MongoDB', 'PostgreSQL', 'MySQL']
+      choices: ['MongoDB']
     }
   ]);
 
@@ -77,22 +77,8 @@ export async function promptInitDatabase() {
   return ans.initDB;
 }
 
-export async function getInitGit() {
-  const ans = await inquirer.prompt([
-    {
-      type: 'confirm',
-      name: 'initGitRepo',
-      message: 'Initialize a Git repository?',
-      default: false
-    }
-  ]);
-
-  return ans.initGitRepo;
-}
-
 export async function promptOrm(database) {
   database = database?.toLowerCase() ?? '';
-  console.log('--database', database);
   let ormChoices = [];
 
   if (database === 'mongodb') {

@@ -1,4 +1,3 @@
-import { MongodbDatabaseConfig } from './nestjs/database.js';
 import {
   copyFile,
   createAndUpdateFile,
@@ -9,7 +8,7 @@ import {
 } from './filemanager.js';
 import { AppModuleContent } from '../../templates/backend/nestjs/base/app-module.js';
 import path from 'path';
-import { MongodbSchema } from '../../templates/backend/nestjs/base/databases.js';
+import {MongodbDatabaseConfig, MongodbSchema} from '../../templates/backend/nestjs/base/databases.js';
 import {
   NEST_MONGOOSE_PACKAGE,
   NEST_PACKAGE_JSON
