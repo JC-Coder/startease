@@ -32,7 +32,7 @@ yarn global add startease
 To start using StartEase, run the following command in your terminal:
 
 ```bash
-startease
+startease-cli
 ```
 
 This command will launch StartEase and guide you through the project setup process with easy-to-follow prompts.
