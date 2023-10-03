@@ -293,7 +293,7 @@ export async function createBackendProject(
         DJANGO_ASGI
       );
 
-      // uses sqlite be default for now till support for postgresql is added.
+      // uses sqlite by default for now till support for postgresql is added.
 
       /*
       if (database) {

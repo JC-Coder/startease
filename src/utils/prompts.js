@@ -57,7 +57,7 @@ export async function promptDatabase() {
       type: 'list',
       name: 'database',
       message: 'select a database',
-      choices: ['MongoDB', "SQLite3", "PostgresQL"]
+      choices: ['MongoDB', "SQLite3"]
     }
   ]);
 
