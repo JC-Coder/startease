@@ -345,6 +345,21 @@ export async function createBackendProject(
         }
       );
 
+      if (shell.which("git")) {
+        // initialize git for the final source
+        
+        stages.push({
+          message: 'Initializing git ...',
+          duration: 1000
+        });
+
+        shell.cd(`${destinationPath}`)
+        shell.exec(`git init`);
+        shell.exec(`git add .`);
+        shell.exec(`git commit -m "Initial commit"`);
+        shell.cd("-");
+      }
+
       // success message
       stages.push({
         message: `Backend project created successfully! : ${destinationPath}`,
