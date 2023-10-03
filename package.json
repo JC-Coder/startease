@@ -27,6 +27,7 @@
     "gradient-string": "^2.0.2",
     "inquirer": "^8.2.6",
     "ora": "^7.0.1",
+    "shelljs": "^0.8.5",
     "simple-git": "^3.19.1"
   },
   "bin": {

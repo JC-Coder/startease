@@ -16,6 +16,7 @@ import {
 } from './src/utils/prompts.js';
 
 const toolName = "StartEase";
+const jsBackendStacks = ["expressjs", "nestjs"];
 
 program.version('1.0.0').description('StartEase CLI');
 
@@ -57,7 +58,9 @@ async function startProject() {
         if (initDB) {
             database = await promptDatabase();
 
-            orm = await promptOrm(database);
+            if (jsBackendStacks.includes(framework)) {
+                orm = await promptOrm(database);
+            }
         }
 
         await createBackendProject(projectName, framework, database, orm);

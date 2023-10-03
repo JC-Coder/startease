@@ -44,7 +44,7 @@ export async function promptBackendFramework() {
       type: 'list',
       name: 'framework',
       message: 'Choose a framework:',
-      choices: ['NestJS', 'ExpressJs']
+      choices: ['NestJS', 'ExpressJs', 'Django']
     }
   ]);
 
@@ -57,7 +57,7 @@ export async function promptDatabase() {
       type: 'list',
       name: 'database',
       message: 'select a database',
-      choices: ['MongoDB']
+      choices: ['MongoDB', "SQLite3", "PostgresQL"]
     }
   ]);
 
