@@ -32,5 +32,8 @@
   },
   "bin": {
     "startease-cli": "./cli.js"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.3"
   }
 }
