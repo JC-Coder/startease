@@ -1,20 +1,20 @@
-import { copyFile, getTemplateDir } from "./filemanager.js"
-import path from "path"
-import ora from "ora"
+import { copyFile, getTemplateDir } from "./filemanager.js";
+import path from "path";
+import ora from "ora";
 
 /**
  * loader
  */
-let stages = [{ message: "Creating Project ...", duration: 2000 }]
+let stages = [{ message: "Creating Project ...", duration: 2000 }];
 
 async function startSpinner() {
   for (const stage of stages) {
-    const spinner = ora(stage.message).start()
-    await new Promise((resolve) => setTimeout(resolve, stage.duration))
-    spinner.succeed(stage.message.replace("...", " completed."))
+    const spinner = ora(stage.message).start();
+    await new Promise((resolve) => setTimeout(resolve, stage.duration));
+    spinner.succeed(stage.message.replace("...", " completed."));
   }
 
-  stages = [{ message: "Creating Project ...", duration: 2000 }]
+  stages = [{ message: "Creating Project ...", duration: 2000 }];
 }
 
 /**
@@ -28,8 +28,8 @@ export async function createFrontendProject(projectName, framework, language) {
   try {
     const destinationPath = path.join(
       process.cwd(),
-      projectName ?? `project-starter-${framework}-template`
-    )
+      projectName ?? `project-starter-${framework}-template`,
+    );
 
     if (framework === "reactjs") {
       //   copy files based on the language chosen
@@ -37,17 +37,17 @@ export async function createFrontendProject(projectName, framework, language) {
         case "javascript":
           copyFile(
             getTemplateDir(`frontend/reactjs/react-javascript-temp`),
-            destinationPath
-          )
-          break
+            destinationPath,
+          );
+          break;
         case "typescript":
           copyFile(
             getTemplateDir(`frontend/reactjs/react-typescript-temp`),
-            destinationPath
-          )
+            destinationPath,
+          );
 
         default:
-          break
+          break;
       }
 
       // success message
@@ -56,11 +56,11 @@ export async function createFrontendProject(projectName, framework, language) {
           language.charAt(0).toUpperCase() + language.slice(1)
         } created successfully! : ${destinationPath}`,
         duration: 1000,
-      })
+      });
 
-      await startSpinner()
+      await startSpinner();
     }
   } catch (e) {
-    console.log(`Error Creating Frontend Project: ${e}`)
+    console.log(`Error Creating Frontend Project: ${e}`);
   }
 }
