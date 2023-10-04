@@ -51,13 +51,17 @@ export async function promptBackendFramework() {
   return ans.framework.toLowerCase().replace(/ /g, '-');
 }
 
-export async function promptDatabase() {
+export async function promptDatabase(framework) {
+  const choices = framework === "django" ?
+    ["SQLite3"] :
+    ["MongoDB"]
+
   const ans = await inquirer.prompt([
     {
       type: 'list',
       name: 'database',
       message: 'select a database',
-      choices: ['MongoDB', "SQLite3"]
+      choices
     }
   ]);
 
