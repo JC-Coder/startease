@@ -15,7 +15,7 @@ import {
   promptProjectName,
   promptProjectStack,
 } from "./src/utils/prompts.js"
-import { createFrontendroject } from "./src/utils/create-frontend-project.js"
+import { createFrontendProject } from "./src/utils/create-frontend-project.js"
 
 const toolName = "StartEase"
 const jsBackendStacks = ["expressjs", "nestjs"]
@@ -57,7 +57,7 @@ async function startProject() {
     framework = await promptFrontendFramework()
     language = await promptFrontendLanguage()
 
-    await createFrontendroject(projectName, framework, language)
+    await createFrontendProject(projectName, framework, language)
   } else if (projectStack === "backend") {
     framework = await promptBackendFramework()
 

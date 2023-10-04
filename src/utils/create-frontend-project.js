@@ -42,33 +42,33 @@ export async function createFrontendProject(projectName, framework, language) {
       // copy reactjs template to directory
 
       //   copy files based on the language chosen
-      copyFile(
-        getTemplateDir(`frontend/reactjs/react-${language}-temp`),
-        destinationPath
-      )
+
+      switch (language) {
+        case "javascript":
+          copyFile(
+            getTemplateDir(`frontend/reactjs/react-javascript-temp`),
+            destinationPath
+          )
+          break
+        case "typescript":
+          copyFile(
+            getTemplateDir(`frontend/reactjs/react-typescript-temp`),
+            destinationPath
+          )
+
+        default:
+          copyFile(
+            getTemplateDir(`frontend/reactjs/react-javascript-temp`),
+            destinationPath
+          )
+          break
+      }
 
       // success message
       stages.push({
         message: `Frontend - ReactJS project with ${
           language.charAt(0).toUpperCase() + language.slice(1)
         } created successfully! : ${destinationPath}`,
-        duration: 1000,
-      })
-
-      await startSpinner()
-    } else if (framework === "vuejs") {
-      // copy vuejs template to directory
-      copyFile(getTemplateDir("frontend/vuejs/vuejs-temp"), destinationPath)
-
-      // add package json file
-      //   createAndUpdateFile(
-      //     `${destinationPath}/package.json`,
-      //     JSON.stringify(ExpressJsPackageJsonTemplate)
-      //   )
-
-      // success message
-      stages.push({
-        message: `Frontend project created successfully! : ${destinationPath}`,
         duration: 1000,
       })
 
