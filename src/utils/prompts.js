@@ -57,20 +57,22 @@ export async function promptBackendFramework() {
       type: "list",
       name: "framework",
       message: "Choose a framework:",
-      choices: ["NestJS", "ExpressJs"],
+      choices: ["NestJS", "ExpressJs", "Django"],
     },
   ])
 
   return ans.framework.toLowerCase().replace(/ /g, "-")
 }
 
-export async function promptDatabase() {
+export async function promptDatabase(framework) {
+  const choices = framework === "django" ? ["SQLite3"] : ["MongoDB"]
+
   const ans = await inquirer.prompt([
     {
       type: "list",
       name: "database",
       message: "select a database",
-      choices: ["MongoDB"],
+      choices,
     },
   ])
 

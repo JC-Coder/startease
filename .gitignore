@@ -6,3 +6,5 @@ node_modules/
 >>>>>>> master
 dist
 .env
+.idea
+.DS_Store

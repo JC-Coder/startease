@@ -31,7 +31,7 @@ async function startSpinner() {
  * @param {string} language - {typescript, javascript}
  */
 
-export async function createFrontendroject(projectName, framework, language) {
+export async function createFrontendProject(projectName, framework, language) {
   try {
     const destinationPath = path.join(
       process.cwd(),

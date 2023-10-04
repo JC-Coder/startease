@@ -4,7 +4,7 @@ import {
   createFolder,
   getTemplateDir,
   updateFileContent,
-  writeToFile
+  writeToFile,
 } from './filemanager.js';
 import { AppModuleContent } from '../../templates/backend/nestjs/base/app-module.js';
 import path from 'path';
@@ -21,7 +21,17 @@ import {
 } from '../../templates/backend/expressjs/base/database.js';
 import { ExpressJsPackageJsonTemplate } from '../../templates/backend/expressjs/base/package-json.js';
 import { ExpressJsEnvironmentTemplate } from '../../templates/backend/expressjs/base/config.js';
+import { DJANGO_MANAGER } from "../../templates/backend/django/base/manage.js";
+import { DJANGO_WSGI } from "../../templates/backend/django/base/wsgi.js";
+import { DJANGO_ASGI } from "../../templates/backend/django/base/asgi.js";
+import { DJANGO_SETTINGS } from "../../templates/backend/django/base/settings.js";
+import { DJANGO_ENV_VARIABLES } from "../../templates/backend/django/base/env.js";
+
+// third-party imports
+
 import ora from 'ora';
+import shell from "shelljs";
+import crypto from "crypto";
 
 /**
  * loader
@@ -242,6 +252,122 @@ export async function createBackendProject(
       });
 
       await startSpinner();
+    } else if (framework === "django") {
+
+      // django does not support some file namings so the name has to be parsed into a valid python identifier.
+      projectName = projectName.replaceAll(/[-\. ]/g, "");
+
+      // copy django template to directory
+
+      copyFile(getTemplateDir("backend/django/django-temp"), destinationPath)
+
+      // rename project name in final source
+      
+      shell.mv(
+        `${destinationPath}/django_boilerplate`,
+        `${destinationPath}/${projectName}`
+      );
+
+      writeToFile(
+        `${destinationPath}/.env`,
+        DJANGO_ENV_VARIABLES
+      );
+
+      writeToFile(
+        `${destinationPath}/manage.py`,
+        DJANGO_MANAGER
+      );
+
+      writeToFile(
+        `${destinationPath}/${projectName}/settings.py`,
+        DJANGO_SETTINGS
+      );
+
+      writeToFile(
+        `${destinationPath}/${projectName}/wsgi.py`,
+        DJANGO_WSGI
+      );
+
+      writeToFile(
+        `${destinationPath}/${projectName}/asgi.py`,
+        DJANGO_ASGI
+      );
+
+      // uses sqlite by default for now till support for postgresql is added.
+
+      /*
+      if (database) {
+        switch (database) {
+          case "postgresql":
+        }
+      }
+      */
+
+      // add updates to django starter files
+      
+      updateFileContent(
+        `${destinationPath}/.env`,
+        DJANGO_ENV_VARIABLES,
+        {
+          SECRET_KEY: crypto.randomUUID().split("-").join("")
+        }
+      );
+
+      updateFileContent(
+        `${destinationPath}/manage.py`,
+        DJANGO_MANAGER,
+        {
+          projectName
+        }
+      );
+
+      updateFileContent(
+        `${destinationPath}/${projectName}/wsgi.py`,
+        DJANGO_WSGI,
+        {
+          projectName
+        }
+      );
+
+      updateFileContent(
+        `${destinationPath}/${projectName}/asgi.py`,
+        DJANGO_ASGI,
+        {
+          projectName
+        }
+      );
+
+      updateFileContent(
+        `${destinationPath}/${projectName}/settings.py`,
+        DJANGO_SETTINGS,
+        {
+          projectName
+        }
+      );
+
+      if (shell.which("git")) {
+        // initialize git for the final source
+        
+        stages.push({
+          message: 'Initializing git ...',
+          duration: 1000
+        });
+
+        shell.cd(`${destinationPath}`)
+        shell.exec(`git init`);
+        shell.exec(`git add .`);
+        shell.exec(`git commit -m "Initial commit"`);
+        shell.cd("-");
+      }
+
+      // success message
+      stages.push({
+        message: `Backend project created successfully! : ${destinationPath}`,
+        duration: 1000
+      });
+
+      await startSpinner();
+
     }
   } catch (e) {
     console.log(`Error Creating Backend Project: ${e}`);
