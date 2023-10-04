@@ -1,11 +1,4 @@
-import {
-  copyFile,
-  createAndUpdateFile,
-  createFolder,
-  getTemplateDir,
-  updateFileContent,
-  writeToFile,
-} from "./filemanager.js"
+import { copyFile, getTemplateDir } from "./filemanager.js"
 import path from "path"
 import ora from "ora"
 
@@ -39,10 +32,7 @@ export async function createFrontendProject(projectName, framework, language) {
     )
 
     if (framework === "reactjs") {
-      // copy reactjs template to directory
-
       //   copy files based on the language chosen
-
       switch (language) {
         case "javascript":
           copyFile(
@@ -57,10 +47,6 @@ export async function createFrontendProject(projectName, framework, language) {
           )
 
         default:
-          copyFile(
-            getTemplateDir(`frontend/reactjs/react-javascript-temp`),
-            destinationPath
-          )
           break
       }
 
