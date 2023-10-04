@@ -1,5 +1,6 @@
 {
-  "name": "react-javascript-temp",
+  "name": "startease-react-javascript-temp",
+  "description": "Startease template to get up and developing quickly with React and JavaScript",
   "private": true,
   "version": "0.0.0",
   "type": "module",
