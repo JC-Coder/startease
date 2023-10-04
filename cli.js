@@ -1,32 +1,37 @@
 #!/usr/bin/env node
 
 import figlet from 'figlet';
-import {program} from 'commander';
+import { program } from 'commander';
 import chalk from 'chalk';
 import useGradient from './src/utils/useGradient.js';
-import {createBackendProject} from './src/utils/create-backend-project.js';
+import { createBackendProject } from './src/utils/create-backend-project.js';
 import {
-    promptBackendFramework,
-    promptDatabase,
-    promptFrontendFramework,
-    promptInitDatabase,
-    promptOrm,
-    promptProjectName,
-    promptProjectStack
+  promptBackendFramework,
+  promptDatabase,
+  promptFrontendFramework,
+  promptInitDatabase,
+  promptOrm,
+  promptProjectName,
+  promptProjectStack
 } from './src/utils/prompts.js';
+
 
 const toolName = "StartEase";
 const jsBackendStacks = ["expressjs", "nestjs"];
 
+
 program.version('1.0.0').description('StartEase CLI');
 
-program.description('Scaffold a new project with StartEase').action(async () => {
+program
+  .description('Scaffold a new project with StartEase')
+  .action(async () => {
     await startProject();
-});
+  });
 
 program.parse(process.argv);
 
 async function startProject() {
+
     let framework;
     let projectName;
     let projectStack;
@@ -64,22 +69,23 @@ async function startProject() {
         }
 
         await createBackendProject(projectName, framework, database, orm);
-    }
+      }
+
 }
 
 /**
  * Render cli title
  */
 function renderTitle() {
-    const figletConfig = {
-        font: 'Big',
-        horizontalLayout: 'default',
-        verticalLayout: 'default',
-        width: 80,
-        whitespaceBreak: true
-    };
+  const figletConfig = {
+    font: 'Big',
+    horizontalLayout: 'default',
+    verticalLayout: 'default',
+    width: 80,
+    whitespaceBreak: true
+  };
 
-    useGradient({
-        title: figlet.textSync('StartEase', figletConfig)
-    });
+  useGradient({
+    title: figlet.textSync('StartEase', figletConfig)
+  });
 }

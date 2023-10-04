@@ -1,6 +1,6 @@
 export const ExpressJsMongodbMongooseConnectionTemplate = `
 import mongoose from 'mongoose';
-import { ENVIRONMENT } from './environment';
+import { ENVIRONMENT } from './environment.js';
 
 export const connectDb = async () => {
   try {
