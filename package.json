@@ -1,6 +1,6 @@
 {
   "name": "startease-cli",
-  "version": "1.0.14",
+  "version": "1.1.0",
   "description": "StartEase is a versatile command-line tool designed to simplify and accelerate project setup. It empowers developers to quickly scaffold projects, select from various templates, and integrate with different databases, allowing for a smooth and efficient project kickstart.",
   "main": "./cli.js",
   "type": "module",
@@ -27,6 +27,7 @@
     "gradient-string": "^2.0.2",
     "inquirer": "^8.2.6",
     "ora": "^7.0.1",
+    "shelljs": "^0.8.5",
     "simple-git": "^3.19.1"
   },
   "bin": {

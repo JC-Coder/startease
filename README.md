@@ -52,7 +52,7 @@ The following project templates are available:
 - **Backend**:
     - [x] Express.js Server
     - [x] Nest.js Server
-    - [ ] Django Web App
+    - [x] Django Web App
     - [ ] Ruby on Rails API
     - [ ] Flask API
 
@@ -69,7 +69,7 @@ The Project Starter Tool supports the following databases:
 - [ ] PostgreSQL
 - [ ] MySQL
 - [x] MongoDB
-- [ ] SQLite
+- [x] SQLite
 
 # Contribution Guidelines
 

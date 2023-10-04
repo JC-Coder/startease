@@ -15,7 +15,10 @@ import {
   promptProjectStack
 } from './src/utils/prompts.js';
 
-const toolName = 'StartEase';
+
+const toolName = "StartEase";
+const jsBackendStacks = ["expressjs", "nestjs"];
+
 
 program.version('1.0.0').description('StartEase CLI');
 
@@ -28,42 +31,45 @@ program
 program.parse(process.argv);
 
 async function startProject() {
-  let framework;
-  let projectName;
-  let projectStack;
-  let initDB;
-  let database;
-  let orm;
 
-  const initialMsg = `Simplify Project Setup with the. ${chalk.green(
-    toolName
-  )} CLI Tool.`;
+    let framework;
+    let projectName;
+    let projectStack;
+    let initDB;
+    let database;
+    let orm;
 
-  // render cli title
-  renderTitle();
-  console.log(chalk.white(initialMsg));
+    const initialMsg = `Simplify Project Setup with the. ${chalk.green(
+        toolName
+    )} CLI Tool.`;
 
-  projectName = await promptProjectName();
-  projectStack = await promptProjectStack();
+    // render cli title
+    renderTitle();
+    console.log(chalk.white(initialMsg));
 
-  /**
-   * start prompts
-   */
-  if (projectStack === 'frontend') {
-    console.log(`Ops, 🚀 Frontend support is coming soon! 🎉`);
-  } else if (projectStack === 'backend') {
-    framework = await promptBackendFramework();
+    projectName = await promptProjectName();
+    projectStack = await promptProjectStack();
 
-    initDB = await promptInitDatabase();
+    /**
+     * start prompts
+     */
+    if (projectStack === 'frontend') {
+        console.log(`Ops, 🚀 Frontend support is coming soon! 🎉`);
+    } else if (projectStack === 'backend') {
+        framework = await promptBackendFramework();
 
-    if (initDB) {
-      database = await promptDatabase();
+        initDB = await promptInitDatabase();
 
-      orm = await promptOrm(database);
-    }
+        if (initDB) {
+            database = await promptDatabase(framework);
 
-    await createBackendProject(projectName, framework, database, orm);
-  }
+            if (jsBackendStacks.includes(framework)) {
+                orm = await promptOrm(database);
+            }
+        }
+
+        await createBackendProject(projectName, framework, database, orm);
+      }
 }
 
 /**
