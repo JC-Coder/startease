@@ -5,7 +5,9 @@
   "main": "./cli.js",
   "type": "module",
   "scripts": {
-    "start": "node ./cli.js"
+    "start": "node ./cli.js",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check"
   },
   "keywords": [
     "startease",
