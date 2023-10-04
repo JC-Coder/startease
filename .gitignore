@@ -1,3 +1,8 @@
 node_modules/
+<<<<<<< HEAD
+=======
+.idea/
+.DS_Store
+>>>>>>> master
 dist
 .env

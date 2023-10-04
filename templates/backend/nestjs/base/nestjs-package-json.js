@@ -1,5 +1,5 @@
 export const NestjsPackageJsonTemplate = {
-    name: 'startease nestjs project',
+    name: 'startease-nestjs-project',
     private: true,
     version: '1.0.0',
     description: 'NestJs project generated using startease CLI tool',

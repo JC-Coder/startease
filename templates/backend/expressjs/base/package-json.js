@@ -1,5 +1,5 @@
 export const ExpressJsPackageJsonTemplate = {
-  name: 'startease expressjs project',
+  name: 'startease-expressjs-project',
   version: '1.0.0',
   description: 'Expressjs project generated using startease CLI tool',
   main: 'index.js',
