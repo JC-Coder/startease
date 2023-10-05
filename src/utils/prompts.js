@@ -65,7 +65,9 @@ export async function promptBackendFramework() {
 }
 
 export async function promptDatabase(framework) {
-  const choices = framework === "django" ? ["SQLite3"] : ["MongoDB"]
+  const choices = framework === "django" ?
+    ["SQLite3", "PostgreSQL"]
+    : ["MongoDB"]
 
   const ans = await inquirer.prompt([
     {

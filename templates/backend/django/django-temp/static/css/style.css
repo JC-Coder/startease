@@ -4,6 +4,24 @@
   box-sizing: border-box;
 }
 
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color-scheme: only dark;
+  background: #242424;
+  color: #f2f2f2;
+  padding: 2em;
+}
+
 h1 {
   font-size: 1.5rem;
+}
+
+img {
+  height: 100px;
+  width: 100%;
+  object-fit: contain;
+  mix-blend-mode: revert;
 }
