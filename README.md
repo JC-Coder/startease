@@ -44,7 +44,7 @@ That's it! StartEase simplifies project setup so you can focus on your developme
 The following project templates are available:
 
 - **Frontend**:
-    - [ ] React App
+    - [x] React App (Javascript / TypeScript)
     - [ ] Vue.js App
     - [ ] Angular App
     - [ ] HTML/CSS/JavaScript Template
@@ -179,6 +179,8 @@ When you're ready to submit your changes:
 4. Click the "New Pull Request" button and follow the prompts.
 
 We'll review your pull request as soon as possible.
+
+Note: Pull requests are to be made against the dev branch.
 
 ## License
 

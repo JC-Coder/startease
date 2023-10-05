@@ -9,6 +9,7 @@ import {
   promptBackendFramework,
   promptDatabase,
   promptFrontendFramework,
+  promptFrontendLanguage,
   promptInitDatabase,
   promptOrm,
   promptProjectName,
@@ -36,6 +37,7 @@ async function startProject() {
   let initDB;
   let database;
   let orm;
+  let language;
 
   const initialMsg = `Simplify Project Setup with the. ${chalk.green(
     toolName
@@ -52,20 +54,21 @@ async function startProject() {
    * start prompts
    */
   if (projectStack === "frontend") {
-    // console.log(`Ops, 🚀 Frontend support is coming soon! 🎉`);
     framework = await promptFrontendFramework();
-    await createFrontendProject(projectName, framework);
+    if (framework !== "vanilla-js") {
+      language = await promptFrontendLanguage();
+    }
+
+    await createFrontendProject(projectName, framework, language);
   } else if (projectStack === "backend") {
     framework = await promptBackendFramework();
 
     initDB = await promptInitDatabase();
 
     if (initDB) {
-      database = await promptDatabase(framework);
+      database = await promptDatabase();
 
-      if (jsBackendStacks.includes(framework)) {
-        orm = await promptOrm(database);
-      }
+      orm = await promptOrm(database);
     }
 
     await createBackendProject(projectName, framework, database, orm);

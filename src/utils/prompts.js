@@ -31,11 +31,25 @@ export async function promptFrontendFramework() {
       type: "list",
       name: "framework",
       message: "Choose a framework:",
+
       choices: ["ReactJs", "Vanilla-Js"],
     },
   ]);
 
   return ans.framework.toLowerCase().replace(/ /g, "-");
+}
+
+export async function promptFrontendLanguage() {
+  const ans = await inquirer.prompt([
+    {
+      type: "list",
+      name: "language",
+      message: "Choose Your Preferred Language:",
+      choices: ["JavaScript", "TypeScript"],
+    },
+  ]);
+
+  return ans.language.toLowerCase().replace(/ /g, "-");
 }
 
 export async function promptBackendFramework() {
@@ -97,6 +111,5 @@ export async function promptOrm(database) {
       choices: ormChoices,
     },
   ]);
-
   return ans.database.toLowerCase();
 }
