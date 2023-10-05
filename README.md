@@ -53,6 +53,7 @@ The following project templates are available:
     - [x] Express.js Server
     - [x] Nest.js Server
     - [x] Django Web App
+    - [x] Laravel web API / web App
     - [ ] Ruby on Rails API
     - [ ] Flask API
 
