@@ -25,6 +25,8 @@ import { DJANGO_MANAGER } from "../../templates/backend/django/base/manage.js";
 import { DJANGO_WSGI } from "../../templates/backend/django/base/wsgi.js";
 import { DJANGO_ASGI } from "../../templates/backend/django/base/asgi.js";
 import { DJANGO_SETTINGS } from "../../templates/backend/django/base/settings.js";
+
+import {LARAVEL_JSON_API_BASE_CONTROLLER, LARAVEL_BASE_CONTROLLER} from "../../templates/backend/laravel/base/basecontroller.js";
 import { DJANGO_ENV_VARIABLES } from "../../templates/backend/django/base/env.js";
 
 // third-party imports
@@ -32,6 +34,8 @@ import { DJANGO_ENV_VARIABLES } from "../../templates/backend/django/base/env.js
 import ora from 'ora';
 import shell from "shelljs";
 import crypto from "crypto";
+import { ADD_MONGODB_SERVICE_PROVIDER, ADD_NEW_MONGODB_CONNECTION } from '../../templates/backend/laravel/base/config.js';
+import { promptInitDatabase } from './prompts.js';
 
 /**
  * loader
@@ -56,7 +60,8 @@ export async function createBackendProject(
   projectName,
   framework,
   database,
-  orm
+  orm,
+  webType
 ) {
   try {
     const destinationPath = path.join(
@@ -368,7 +373,59 @@ export async function createBackendProject(
 
       await startSpinner();
 
-    }
+    } else if (framework === "laravel") {
+      copyFile(getTemplateDir("backend/laravel/laravel-temp"), destinationPath);
+
+      console.log(webType)
+
+      if (webType === "web api"){
+      shell.mkdir("-p", `${destinationPath}/app/Http/Controllers/API/V1/`);
+      writeToFile(
+        `${destinationPath}/app/Http/Controllers/API/V1/BaseController.php`,
+        LARAVEL_JSON_API_BASE_CONTROLLER);
+      }else{
+        writeToFile(
+          `${destinationPath}/app/Http/Controllers/BaseController.php`,
+          LARAVEL_BASE_CONTROLLER);
+      }
+    
+
+      if (database) {
+          stages.push({ message: 'Adding Database Module ...', duration: 1000 });
+
+          switch (database) {
+            case 'mongodb':
+              switch (orm) {
+                case 'laravel-mongodb':
+                  default:
+
+                  updateFileContent(
+                    `${destinationPath}/config/app.php`,
+                    ADD_MONGODB_SERVICE_PROVIDER
+                  );
+
+                  updateFileContent(
+                    `${destinationPath}/config/database.php`,
+                    ADD_NEW_MONGODB_CONNECTION
+                  );
+                
+              }
+              break;
+          }
+        }
+      
+        shell.cd(`${destinationPath}`);
+
+        shell.exec("php artisan key:generate");
+
+        stages.push({
+          message: `Backend project created successfully! : ${destinationPath}`,
+          duration: 1000,
+        });
+
+        await startSpinner();
+      }
+    
   } catch (e) {
     console.log(`Error Creating Backend Project: ${e}`);
   }

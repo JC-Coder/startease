@@ -57,7 +57,7 @@ export async function promptBackendFramework() {
       type: "list",
       name: "framework",
       message: "Choose a framework:",
-      choices: ["NestJS", "ExpressJs", "Django"],
+      choices: ["NestJS", "ExpressJs", "Django", "Laravel"],
     },
   ])
 
@@ -65,7 +65,21 @@ export async function promptBackendFramework() {
 }
 
 export async function promptDatabase(framework) {
-  const choices = framework === "django" ? ["SQLite3"] : ["MongoDB"]
+  
+  let choices;
+  switch (framework) {
+    case "django":
+      choices = ["SQLite3"];
+      break;
+
+    case "laravel":
+      choices = ["MongoDB"];
+      break;
+  
+    default:
+      choices = ["MongoDB"];
+      break;
+  }
 
   const ans = await inquirer.prompt([
     {
@@ -92,24 +106,47 @@ export async function promptInitDatabase() {
   return ans.initDB
 }
 
-export async function promptOrm(database) {
+export async function promptOrm(database, framework) {
   database = database?.toLowerCase() ?? ""
   let ormChoices = []
 
-  if (database === "mongodb") {
-    ormChoices = ["Mongoose"]
+    if (database === "mongodb" && framework === "expressjs") {
+    ormChoices = ["Mongoose"];
+  } else if(database === "mongodb" && framework === "laravel"){
+    ormChoices = ["Laravel-mongodb"]
   } else {
-    ormChoices = ["Typeorm"]
+    ormChoices = ["Typeorm"];
   }
 
   const ans = await inquirer.prompt([
     {
       type: "list",
       name: "database",
-      message: "select your preferred ORM",
+      message: "select your preferred ORM:",
       choices: ormChoices,
     },
   ])
 
-  return ans.database.toLowerCase()
+  return ans.database.toLowerCase();
 }
+
+
+export async function promptWebType(framework){
+  let webTypeChoices = [];
+
+  if(framework === "laravel"){
+    webTypeChoices = ["Web App", "Web API"]
+  }
+
+  const ans = await inquirer.prompt([
+    {
+      type: "list",
+      name: "webType",
+      message: "Select your preferred web type:",
+      choices: webTypeChoices,
+    },
+  ])
+
+  return ans.webType.toLowerCase(); 
+}
+

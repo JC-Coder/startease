@@ -14,6 +14,7 @@ import {
   promptOrm,
   promptProjectName,
   promptProjectStack,
+  promptWebType,
 } from "./src/utils/prompts.js"
 import { createFrontendProject } from "./src/utils/create-frontend-project.js"
 
@@ -38,6 +39,7 @@ async function startProject() {
   let database
   let orm
   let language
+  let webType
 
   const initialMsg = `Simplify Project Setup with the. ${chalk.green(
     toolName
@@ -60,16 +62,22 @@ async function startProject() {
     await createFrontendProject(projectName, framework, language)
   } else if (projectStack === "backend") {
     framework = await promptBackendFramework()
+    if(framework != 'laravel'){
+      null;
+    }else{
+    webType = await promptWebType(framework);
+    };
 
     initDB = await promptInitDatabase()
 
     if (initDB) {
       database = await promptDatabase()
+      
 
-      orm = await promptOrm(database)
+      orm = await promptOrm(database, framework)
     }
 
-    await createBackendProject(projectName, framework, database, orm)
+    await createBackendProject(projectName, framework, database, orm, webType)
   }
 }
 

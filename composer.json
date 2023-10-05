@@ -1,0 +1,5 @@
+{
+    "require": {
+        "mongodb/laravel-mongodb": "*"
+    }
+}
