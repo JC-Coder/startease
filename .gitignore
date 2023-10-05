@@ -1,4 +1,10 @@
+#node modules
 node_modules/
+
+#package lock files
+package-lock.json
+pnpm-lock.yaml
+
 .idea/
 .DS_Store
 dist

@@ -1,50 +1,54 @@
 export const STACK_OPTIONS = {
-  "stacks": [
+  stacks: [
     {
-      "name": "backend",
-      "frameworks": [
+      name: "backend",
+      frameworks: [
         {
-          "name": "nestjs",
-          "key": "nestjs"
+          name: "nestjs",
+          key: "nestjs",
         },
         {
-          "name": "expressjs",
-          "key": "expressjs"
-        }
+          name: "expressjs",
+          key: "expressjs",
+        },
       ],
-      "databases": [
+      databases: [
         {
-          "name": "mongodb",
-          "key": "-db1"
+          name: "mongodb",
+          key: "-db1",
         },
         {
-          "name": "postgresql",
-          "key": "-db2"
+          name: "postgresql",
+          key: "-db2",
         },
         {
-          "name": "mysql",
-          "key": "-db3"
-        }
+          name: "mysql",
+          key: "-db3",
+        },
       ],
-      "orms": [
+      orms: [
         {
-          "name": "mongoose",
-          "key": "-orm1"
+          name: "mongoose",
+          key: "-orm1",
         },
         {
-          "name": "typeorm",
-          "key": "-orm2"
-        }
+          name: "typeorm",
+          key: "-orm2",
+        },
       ],
     },
     {
-      "name": "frontend",
-      "frameworks": [
+      name: "frontend",
+      frameworks: [
         {
-          "name": "reactjs",
-          "key": "reactjs"
-        }
-      ]
-    }
-  ]
+          name: "reactjs",
+          key: "reactjs",
+        },
+        {
+          name: "vanillajs",
+          key: "vanillajs",
+        },
+      ],
+    },
+  ],
 };
