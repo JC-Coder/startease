@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node ./cli.js",
     "format": "prettier . --write",
-    "format:check": "prettier . --check"
+    "lint": "prettier . --check"
   },
   "keywords": [
     "startease",
