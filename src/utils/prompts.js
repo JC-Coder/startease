@@ -51,6 +51,19 @@ export async function promptFrontendLanguage() {
   return ans.language.toLowerCase().replace(/ /g, "-")
 }
 
+export async function promptStylingOption() {
+  const ans = await inquirer.prompt([
+    {
+      type: "list",
+      name: "styling_option",
+      message: "Choose Your Preferred Styling Option:",
+      choices: ["CSS", "TailwindCSS"],
+    },
+  ])
+
+  return ans.styling_option.toLowerCase().replace(/ /g, "-")
+}
+
 export async function promptBackendFramework() {
   const ans = await inquirer.prompt([
     {
