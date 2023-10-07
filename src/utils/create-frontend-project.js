@@ -31,7 +31,7 @@ export async function createFrontendProject(projectName, framework, language) {
       process.cwd(),
       projectName ?? `project-starter-${framework}-template`
     );
-    if (framework === "vanilla-js") {
+    if (framework === "html-css-js") {
       return await vanillaJsHandler(projectName);
     }
     if (framework === "reactjs") {

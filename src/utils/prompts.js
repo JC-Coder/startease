@@ -32,7 +32,7 @@ export async function promptFrontendFramework() {
       name: "framework",
       message: "Choose a framework:",
 
-      choices: ["ReactJs", "Vanilla-Js"],
+      choices: ["ReactJs", "html-css-js"],
     },
   ]);
 

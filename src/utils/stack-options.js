@@ -45,8 +45,8 @@ export const STACK_OPTIONS = {
           key: "reactjs",
         },
         {
-          name: "vanillajs",
-          key: "vanillajs",
+          name: "html-css-js",
+          key: "html-css-js",
         },
       ],
     },

@@ -39,12 +39,12 @@ async function startSpinner(stages) {
  * @returns {void}
  */
 export const vanillaJsHandler = async function (projectName) {
-  const destinationPath = setDestinationPath("vanilla-js", projectName);
+  const destinationPath = setDestinationPath("html-css-js", projectName);
   const stages = [];
   stages.push({ message: "Creating Project ...", duration: 2000 });
-  copyFile(getTemplateDir("frontend/vanilla-js"), destinationPath);
+  copyFile(getTemplateDir("frontend/html-css-js"), destinationPath);
   stages.push({
-    message: `Vanilla-Js project created successfully! : ${destinationPath}`,
+    message: `html-css-js project created successfully! : ${destinationPath}`,
     duration: 1000,
   });
 

@@ -55,7 +55,7 @@ async function startProject() {
    */
   if (projectStack === "frontend") {
     framework = await promptFrontendFramework();
-    if (framework !== "vanilla-js") {
+    if (framework !== "html-css-js") {
       language = await promptFrontendLanguage();
     }
 
