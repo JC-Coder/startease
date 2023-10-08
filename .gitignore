@@ -1,9 +1,12 @@
+#node modules
 node_modules/
-<<<<<<< HEAD
-=======
+
+#package lock files
+package-lock.json
+pnpm-lock.yaml
+
 .idea/
 .DS_Store
->>>>>>> master
 dist
 .env
 .idea
