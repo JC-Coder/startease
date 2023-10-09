@@ -5,22 +5,25 @@ import {
   getTemplateDir,
   updateFileContent,
   writeToFile,
-} from './filemanager.js';
-import { AppModuleContent } from '../../templates/backend/nestjs/base/app-module.js';
-import path from 'path';
-import {MongodbDatabaseConfig, MongodbSchema} from '../../templates/backend/nestjs/base/databases.js';
+} from "./filemanager.js";
+import { AppModuleContent } from "../../templates/backend/nestjs/base/app-module.js";
+import path from "path";
+import {
+  MongodbDatabaseConfig,
+  MongodbSchema,
+} from "../../templates/backend/nestjs/base/databases.js";
 import {
   NEST_MONGOOSE_PACKAGE,
-  NestjsPackageJsonTemplate
-} from '../../templates/backend/nestjs/base/nestjs-package-json.js';
-import { ENVIRONMENT_TEMPLATE } from '../../templates/backend/nestjs/base/environment.js';
-import { EXPRESSJS_SERVER_TEMPLATE } from '../../templates/backend/expressjs/base/server.js';
+  NestjsPackageJsonTemplate,
+} from "../../templates/backend/nestjs/base/nestjs-package-json.js";
+import { ENVIRONMENT_TEMPLATE } from "../../templates/backend/nestjs/base/environment.js";
+import { EXPRESSJS_SERVER_TEMPLATE } from "../../templates/backend/expressjs/base/server.js";
 import {
   ExpressJsMongodbMongooseConnectionTemplate,
-  ExpressJsMongoDbMongooseSampleSchema
-} from '../../templates/backend/expressjs/base/database.js';
-import { ExpressJsPackageJsonTemplate } from '../../templates/backend/expressjs/base/package-json.js';
-import { ExpressJsEnvironmentTemplate } from '../../templates/backend/expressjs/base/config.js';
+  ExpressJsMongoDbMongooseSampleSchema,
+} from "../../templates/backend/expressjs/base/database.js";
+import { ExpressJsPackageJsonTemplate } from "../../templates/backend/expressjs/base/package-json.js";
+import { ExpressJsEnvironmentTemplate } from "../../templates/backend/expressjs/base/config.js";
 import { DJANGO_MANAGER } from "../../templates/backend/django/base/manage.js";
 import { DJANGO_WSGI } from "../../templates/backend/django/base/wsgi.js";
 import { DJANGO_ASGI } from "../../templates/backend/django/base/asgi.js";
@@ -29,23 +32,23 @@ import { DJANGO_ENV_VARIABLES } from "../../templates/backend/django/base/env.js
 
 // third-party imports
 
-import ora from 'ora';
+import ora from "ora";
 import shell from "shelljs";
 import crypto from "crypto";
 
 /**
  * loader
  */
-let stages = [{ message: 'Creating Project ...', duration: 2000 }];
+let stages = [{ message: "Creating Project ...", duration: 2000 }];
 
 async function startSpinner() {
   for (const stage of stages) {
     const spinner = ora(stage.message).start();
     await new Promise((resolve) => setTimeout(resolve, stage.duration));
-    spinner.succeed(stage.message.replace('...', ' completed.'));
+    spinner.succeed(stage.message.replace("...", " completed."));
   }
 
-  stages = [{ message: 'Creating Project ...', duration: 2000 }];
+  stages = [{ message: "Creating Project ...", duration: 2000 }];
 }
 
 /**
@@ -56,23 +59,23 @@ export async function createBackendProject(
   projectName,
   framework,
   database,
-  orm
+  orm,
 ) {
   try {
     const destinationPath = path.join(
       process.cwd(),
-      projectName ?? `project-starter-${framework}-template`
+      projectName ?? `project-starter-${framework}-template`,
     );
 
-    if (framework === 'nestjs') {
-      let appModules = '';
-      let appModuleImports = '';
+    if (framework === "nestjs") {
+      let appModules = "";
+      let appModuleImports = "";
       let packageJson = NestjsPackageJsonTemplate;
-      let environmentInterface = '';
-      let environmentContent = '';
+      let environmentInterface = "";
+      let environmentContent = "";
 
       // copy nestjs template to directory
-      copyFile(getTemplateDir('backend/nestjs/nestjs-temp'), destinationPath);
+      copyFile(getTemplateDir("backend/nestjs/nestjs-temp"), destinationPath);
 
       // update app module file content
       writeToFile(`${destinationPath}/src/app.module.ts`, AppModuleContent);
@@ -80,32 +83,32 @@ export async function createBackendProject(
       // add environment file
       writeToFile(
         `${destinationPath}/src/common/configs/environment.ts`,
-        ENVIRONMENT_TEMPLATE
+        ENVIRONMENT_TEMPLATE,
       );
 
       if (database) {
-        stages.push({ message: 'Adding Database Module ...', duration: 1000 });
+        stages.push({ message: "Adding Database Module ...", duration: 1000 });
 
         switch (database) {
-          case 'mongodb':
+          case "mongodb":
             switch (orm) {
-              case 'mongoose':
+              case "mongoose":
                 // write db config
                 createAndUpdateFile(
                   `${destinationPath}/src/module/v1/database/database.module.ts`,
-                  MongodbDatabaseConfig
+                  MongodbDatabaseConfig,
                 );
 
                 // create sample schema file for db
                 createAndUpdateFile(
                   `${destinationPath}/src/module/v1/database/sample.schema.ts`,
-                  MongodbSchema
+                  MongodbSchema,
                 );
 
                 // add mongoose dependencies
                 packageJson.dependencies = {
                   ...packageJson.dependencies,
-                  ...NEST_MONGOOSE_PACKAGE.dependencies
+                  ...NEST_MONGOOSE_PACKAGE.dependencies,
                 };
 
                 // update environment
@@ -115,14 +118,14 @@ export async function createBackendProject(
     URL: process.env.DB_URL,}`;
 
                 // update app module
-                appModules += 'DatabaseModule';
+                appModules += "DatabaseModule";
                 appModuleImports +=
                   'import { DatabaseModule } from "./module/v1/database/database.module";';
                 break;
               default:
                 packageJson.dependencies = {
                   ...packageJson.dependencies,
-                  ...NestjsPackageJsonTemplate.dependencies
+                  ...NestjsPackageJsonTemplate.dependencies,
                 };
                 break;
             }
@@ -132,76 +135,76 @@ export async function createBackendProject(
 
       // update app module
       updateFileContent(
-          `${destinationPath}/src/app.module.ts`,
-          AppModuleContent,
-          {
-            new_modules_path: appModuleImports,
-            new_modules: appModules
-          }
+        `${destinationPath}/src/app.module.ts`,
+        AppModuleContent,
+        {
+          new_modules_path: appModuleImports,
+          new_modules: appModules,
+        },
       );
 
       // update environment config file
       updateFileContent(
-          `${destinationPath}/src/common/configs/environment.ts`,
-          ENVIRONMENT_TEMPLATE,
-          {
-            environment_interface: environmentInterface,
-            environment_content: environmentContent
-          }
+        `${destinationPath}/src/common/configs/environment.ts`,
+        ENVIRONMENT_TEMPLATE,
+        {
+          environment_interface: environmentInterface,
+          environment_content: environmentContent,
+        },
       );
 
       // update packageJsonFile
       createAndUpdateFile(
         `${destinationPath}/package.json`,
-        JSON.stringify(packageJson)
+        JSON.stringify(packageJson),
       );
 
       // success message
       stages.push({
         message: `Backend project created successfully! : ${destinationPath}`,
-        duration: 1000
+        duration: 1000,
       });
 
       await startSpinner();
-    } else if (framework === 'expressjs') {
-      let database_config = '';
-      let database_config_import = '';
-      let additional_environment_variables = '';
+    } else if (framework === "expressjs") {
+      let database_config = "";
+      let database_config_import = "";
+      let additional_environment_variables = "";
       let packageJson = ExpressJsPackageJsonTemplate;
 
       // copy expressjs template to directory
       copyFile(
-        getTemplateDir('backend/expressjs/expressjs-temp'),
-        destinationPath
+        getTemplateDir("backend/expressjs/expressjs-temp"),
+        destinationPath,
       );
 
       // add server.js file
       writeToFile(
         `${destinationPath}/src/server.js`,
-        EXPRESSJS_SERVER_TEMPLATE
+        EXPRESSJS_SERVER_TEMPLATE,
       );
 
       if (database) {
-        stages.push({ message: 'Adding Database Module ...', duration: 1000 });
+        stages.push({ message: "Adding Database Module ...", duration: 1000 });
 
         // create schema folder
         createFolder(`${destinationPath}/src/modules/schemas`);
 
         switch (database) {
-          case 'mongodb':
+          case "mongodb":
             switch (orm) {
-              case 'mongoose':
+              case "mongoose":
               default:
                 // create db config file
                 createAndUpdateFile(
                   `${destinationPath}/src/common/config/database.js`,
-                  ExpressJsMongodbMongooseConnectionTemplate
+                  ExpressJsMongodbMongooseConnectionTemplate,
                 );
 
                 // create sample schema file
                 createAndUpdateFile(
                   `${destinationPath}/src/modules/schemas/sample.schema.js`,
-                  ExpressJsMongoDbMongooseSampleSchema
+                  ExpressJsMongoDbMongooseSampleSchema,
                 );
 
                 // update database config for server js file
@@ -211,7 +214,7 @@ export async function createBackendProject(
                 // update packageJson
                 packageJson.dependencies = {
                   ...packageJson.dependencies,
-                  mongoose: '^7.5.2'
+                  mongoose: "^7.5.2",
                 };
 
                 // update db config
@@ -228,70 +231,57 @@ export async function createBackendProject(
         EXPRESSJS_SERVER_TEMPLATE,
         {
           database_config,
-          database_config_import
-        }
+          database_config_import,
+        },
       );
 
       // add and update config file
       updateFileContent(
         `${destinationPath}/src/common/config/environment.js`,
         ExpressJsEnvironmentTemplate,
-        { additional_environment_variables }
+        { additional_environment_variables },
       );
 
       // add package json file
       createAndUpdateFile(
         `${destinationPath}/package.json`,
-        JSON.stringify(ExpressJsPackageJsonTemplate)
+        JSON.stringify(ExpressJsPackageJsonTemplate),
       );
 
       // success message
       stages.push({
         message: `Backend project created successfully! : ${destinationPath}`,
-        duration: 1000
+        duration: 1000,
       });
 
       await startSpinner();
     } else if (framework === "django") {
-
       // django does not support some file namings so the name has to be parsed into a valid python identifier.
       projectName = projectName.replaceAll(/[-\. ]/g, "");
 
       // copy django template to directory
 
-      copyFile(getTemplateDir("backend/django/django-temp"), destinationPath)
+      copyFile(getTemplateDir("backend/django/django-temp"), destinationPath);
 
       // rename project name in final source
-      
+
       shell.mv(
         `${destinationPath}/django_boilerplate`,
-        `${destinationPath}/${projectName}`
+        `${destinationPath}/${projectName}`,
       );
 
-      writeToFile(
-        `${destinationPath}/.env`,
-        DJANGO_ENV_VARIABLES
-      );
+      writeToFile(`${destinationPath}/.env`, DJANGO_ENV_VARIABLES);
 
-      writeToFile(
-        `${destinationPath}/manage.py`,
-        DJANGO_MANAGER
-      );
+      writeToFile(`${destinationPath}/manage.py`, DJANGO_MANAGER);
 
       writeToFile(
         `${destinationPath}/${projectName}/settings.py`,
-        DJANGO_SETTINGS
+        DJANGO_SETTINGS,
       );
 
-      writeToFile(
-        `${destinationPath}/${projectName}/wsgi.py`,
-        DJANGO_WSGI
-      );
+      writeToFile(`${destinationPath}/${projectName}/wsgi.py`, DJANGO_WSGI);
 
-      writeToFile(
-        `${destinationPath}/${projectName}/asgi.py`,
-        DJANGO_ASGI
-      );
+      writeToFile(`${destinationPath}/${projectName}/asgi.py`, DJANGO_ASGI);
 
       // uses sqlite by default for now till support for postgresql is added.
 
@@ -304,56 +294,48 @@ export async function createBackendProject(
       */
 
       // add updates to django starter files
-      
-      updateFileContent(
-        `${destinationPath}/.env`,
-        DJANGO_ENV_VARIABLES,
-        {
-          SECRET_KEY: crypto.randomUUID().split("-").join("")
-        }
-      );
 
-      updateFileContent(
-        `${destinationPath}/manage.py`,
-        DJANGO_MANAGER,
-        {
-          projectName
-        }
-      );
+      updateFileContent(`${destinationPath}/.env`, DJANGO_ENV_VARIABLES, {
+        SECRET_KEY: crypto.randomUUID().split("-").join(""),
+      });
+
+      updateFileContent(`${destinationPath}/manage.py`, DJANGO_MANAGER, {
+        projectName,
+      });
 
       updateFileContent(
         `${destinationPath}/${projectName}/wsgi.py`,
         DJANGO_WSGI,
         {
-          projectName
-        }
+          projectName,
+        },
       );
 
       updateFileContent(
         `${destinationPath}/${projectName}/asgi.py`,
         DJANGO_ASGI,
         {
-          projectName
-        }
+          projectName,
+        },
       );
 
       updateFileContent(
         `${destinationPath}/${projectName}/settings.py`,
         DJANGO_SETTINGS,
         {
-          projectName
-        }
+          projectName,
+        },
       );
 
       if (shell.which("git")) {
         // initialize git for the final source
-        
+
         stages.push({
-          message: 'Initializing git ...',
-          duration: 1000
+          message: "Initializing git ...",
+          duration: 1000,
         });
 
-        shell.cd(`${destinationPath}`)
+        shell.cd(`${destinationPath}`);
         shell.exec(`git init`);
         shell.exec(`git add .`);
         shell.exec(`git commit -m "Initial commit"`);
@@ -363,11 +345,10 @@ export async function createBackendProject(
       // success message
       stages.push({
         message: `Backend project created successfully! : ${destinationPath}`,
-        duration: 1000
+        duration: 1000,
       });
 
       await startSpinner();
-
     }
   } catch (e) {
     console.log(`Error Creating Backend Project: ${e}`);
