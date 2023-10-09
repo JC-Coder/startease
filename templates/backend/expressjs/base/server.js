@@ -1,4 +1,4 @@
-export const EXPRESSJS_SERVER_TEMPLATE =  `
+export const EXPRESSJS_SERVER_TEMPLATE = `
 import {ENVIRONMENT} from "./common/config/environment.js";
 import express from 'express';
 import AppError from "./common/utils/appError.js";
@@ -78,4 +78,4 @@ app.listen(port, () => {
         {{database_config}}
     }
 );
-`
+`;

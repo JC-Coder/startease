@@ -16,7 +16,7 @@ export const connectDb = async () => {
     process.exit(1);
   }
 };
-`
+`;
 
 export const ExpressJsMongoDbMongooseSampleSchema = `
 import mongoose from "mongoose";

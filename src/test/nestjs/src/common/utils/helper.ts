@@ -1,6 +1,4 @@
-import {
-    randomBytes,
-} from 'crypto';
+import { randomBytes } from 'crypto';
 
 /**
  * Generates a random string of the specified length.
@@ -9,5 +7,5 @@ import {
  * @return {string} - The generated random string.
  */
 export function generateRandomString(length: number): string {
-    return randomBytes(length).toString('hex');
+  return randomBytes(length).toString('hex');
 }

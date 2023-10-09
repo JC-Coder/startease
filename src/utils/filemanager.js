@@ -1,6 +1,6 @@
-import fs from 'fs-extra';
-import * as path from 'path';
-import {fileURLToPath} from "url";
+import fs from "fs-extra";
+import * as path from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,26 +9,26 @@ const __dirname = path.dirname(__filename);
  * checks if a directory is empty
  */
 export function isDirectoryEmpty(dir) {
-    try {
-        return fs.readdirSync(dir).length === 0;
-    } catch (error) {
-        console.log(error);
-        return false;
-    }
+  try {
+    return fs.readdirSync(dir).length === 0;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
 }
 
 /**
  * empty a directory
  */
 export function emptyDirectory(path, cb = null) {
-    // check if node module folder exist and remove firstly
-    if (fs.existsSync(`${path}/node_modules`)) {
-        fs.removeSync(`${path}/node_modules`);
-    }
+  // check if node module folder exist and remove firstly
+  if (fs.existsSync(`${path}/node_modules`)) {
+    fs.removeSync(`${path}/node_modules`);
+  }
 
-    fs.emptyDirSync(path);
+  fs.emptyDirSync(path);
 
-    cb && cb();
+  cb && cb();
 }
 
 /**
@@ -37,24 +37,23 @@ export function emptyDirectory(path, cb = null) {
  * this would delete any {{sample}} that is not sent in datas
  */
 export function updateFileContent(filePath, newContent, datas) {
-    try {
-        // Replace placeholders like {{template_string}} with values from datas
-        const updatedContent = newContent.replace(/{{\s*[\w.]+\s*}}/g, (match) => {
-            const key = match.replace(/[{}]/g, '').trim();
+  try {
+    // Replace placeholders like {{template_string}} with values from datas
+    const updatedContent = newContent.replace(/{{\s*[\w.]+\s*}}/g, (match) => {
+      const key = match.replace(/[{}]/g, "").trim();
 
-            if (datas[key] !== undefined) {
-                return datas[key];
-            }
+      if (datas[key] !== undefined) {
+        return datas[key];
+      }
 
-            return match; // If the dynamic data doesn't exist, keep the placeholder
-        });
+      return match; // If the dynamic data doesn't exist, keep the placeholder
+    });
 
-        // Write the updated content back to the file
-        fs.writeFileSync(filePath, updatedContent, 'utf8');
-
-    } catch (err) {
-        console.error(`Error updating file '${filePath}': ${err}`);
-    }
+    // Write the updated content back to the file
+    fs.writeFileSync(filePath, updatedContent, "utf8");
+  } catch (err) {
+    console.error(`Error updating file '${filePath}': ${err}`);
+  }
 }
 
 /**
@@ -62,11 +61,11 @@ export function updateFileContent(filePath, newContent, datas) {
  * @param {*} filePath
  */
 export function removeFile(filePath) {
-    try {
-        fs.unlink(filePath);
-    } catch (err) {
-        console.error(`Error removing file '${filePath}': ${err}`);
-    }
+  try {
+    fs.unlink(filePath);
+  } catch (err) {
+    console.error(`Error removing file '${filePath}': ${err}`);
+  }
 }
 
 /**
@@ -74,11 +73,11 @@ export function removeFile(filePath) {
  * @param {*} folderPath
  */
 export function removeFolder(folderPath) {
-    try {
-        fs.remove(folderPath);
-    } catch (err) {
-        console.error(`Error removing folder '${folderPath}': ${err}`);
-    }
+  try {
+    fs.remove(folderPath);
+  } catch (err) {
+    console.error(`Error removing folder '${folderPath}': ${err}`);
+  }
 }
 
 /**
@@ -87,11 +86,11 @@ export function removeFolder(folderPath) {
  * @param {*} content
  */
 export function writeToFile(filePath, content) {
-    try {
-        fs.writeFileSync(filePath, content, 'utf8');
-    } catch (err) {
-        console.log(`writeToFile error ${filePath}, error: ${err}`);
-    }
+  try {
+    fs.writeFileSync(filePath, content, "utf8");
+  } catch (err) {
+    console.log(`writeToFile error ${filePath}, error: ${err}`);
+  }
 }
 
 /**
@@ -100,18 +99,18 @@ export function writeToFile(filePath, content) {
  * @param {*} destination
  */
 export function copyFile(source, destination) {
-    // destination = path.join(process.cwd(), destination);
-    fs.copySync(source, destination, {
-        filter: (src, dest) => {
-            const relativePath = path.relative(source, src);
+  // destination = path.join(process.cwd(), destination);
+  fs.copySync(source, destination, {
+    filter: (src, dest) => {
+      const relativePath = path.relative(source, src);
 
-            if (relativePath.startsWith('node_modules')) {
-                return false;
-            }
+      if (relativePath.startsWith("node_modules")) {
+        return false;
+      }
 
-            return true;
-        }
-    });
+      return true;
+    },
+  });
 }
 
 /**
@@ -120,9 +119,9 @@ export function copyFile(source, destination) {
  * @param {*} content
  */
 export function createAndUpdateFile(path, content) {
-    fs.outputFile(path, content, (err) => {
-        if (err) return console.log(err);
-    });
+  fs.outputFile(path, content, (err) => {
+    if (err) return console.log(err);
+  });
 }
 
 /**
@@ -130,11 +129,11 @@ export function createAndUpdateFile(path, content) {
  * @param {*} path
  */
 export function createFolder(path) {
-    fs.ensureDir(path, (err) => {
-        if (err) {
-            console.log(`createFolder success`);
-        }
-    });
+  fs.ensureDir(path, (err) => {
+    if (err) {
+      console.log(`createFolder success`);
+    }
+  });
 }
 
 /**
@@ -143,5 +142,5 @@ export function createFolder(path) {
  * @returns {string}
  */
 export const getTemplateDir = (filePath) => {
-    return path.join(__dirname, '..', '../templates', filePath);
+  return path.join(__dirname, "..", "../templates", filePath);
 };
