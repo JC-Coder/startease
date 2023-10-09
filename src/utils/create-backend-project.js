@@ -8,10 +8,11 @@ import {
 } from './filemanager.js';
 import { AppModuleContent } from '../../templates/backend/nestjs/base/app-module.js';
 import path from 'path';
-import {MongodbDatabaseConfig, MongodbSchema} from '../../templates/backend/nestjs/base/databases.js';
+import {MongodbDatabaseConfig, MongodbSchema, TypeOrmDatabaseModule, TypeOrmAbstractDocument, TypeOrmEntity} from '../../templates/backend/nestjs/base/databases.js';
 import {
   NEST_MONGOOSE_PACKAGE,
-  NestjsPackageJsonTemplate
+  NestjsPackageJsonTemplate,
+  NEST_TYPEORM_PACKAGE
 } from '../../templates/backend/nestjs/base/nestjs-package-json.js';
 import { ENVIRONMENT_TEMPLATE } from '../../templates/backend/nestjs/base/environment.js';
 import { EXPRESSJS_SERVER_TEMPLATE } from '../../templates/backend/expressjs/base/server.js';
@@ -22,6 +23,7 @@ import {
 import { ExpressJsPackageJsonTemplate } from '../../templates/backend/expressjs/base/package-json.js';
 import { ExpressJsEnvironmentTemplate } from '../../templates/backend/expressjs/base/config.js';
 import ora from 'ora';
+import { Postgres_Database_Server } from '../../templates/backend/nestjs/base/docker.js';
 
 /**
  * loader
@@ -66,6 +68,9 @@ export async function createBackendProject(
 
       // update app module file content
       writeToFile(`${destinationPath}/src/app.module.ts`, AppModuleContent);
+
+      // Create a folder for configs
+      createFolder(`${destinationPath}/src/common/configs`);
 
       // add environment file
       writeToFile(
@@ -117,6 +122,42 @@ export async function createBackendProject(
                 break;
             }
             break;
+          case 'postgres':
+            switch(orm) {
+              case 'typeorm':
+                  // Create the databse module itself 
+                  createAndUpdateFile(
+                    `${destinationPath}/src/module/v1/database/database.module.ts`,
+                    TypeOrmDatabaseModule
+                  );
+                  // Create an abstract entity provider for the database
+                  createAndUpdateFile(`${destinationPath}/src/module/v1/database/abstract.entity.ts`, TypeOrmAbstractDocument);
+
+                  // create schema folder
+                  createAndUpdateFile(`${destinationPath}/src/module/v1/user/entities/user.entity.ts`, TypeOrmEntity);
+
+                  // Create a docker-compose file to spin up database server
+                  createAndUpdateFile(`${destinationPath}/docker-compose.yml`,Postgres_Database_Server);
+
+                  // add mongoose dependencies
+                  packageJson.dependencies = {
+                    ...packageJson.dependencies,
+                    ...NEST_TYPEORM_PACKAGE.dependencies
+                  };
+
+                    // update environment
+                    environmentInterface += `\nDB: {
+        HOST: string;\nPORT: number;\nUSER: string;\nPASSWORD: string;\nDATABASE: string\n}`;
+                    environmentContent += `\n  DB: {
+        HOST: process.env.DB_HOST, USER: process.env.DB_USER, DATABASE: process.env.DB_NAME, PASSWORD: process.env.DB_PASSWORD, PORT: process.env.DB_PORT}`;
+
+                    // update app module
+                    appModules += 'DatabaseModule';
+                    appModuleImports +=
+                      'import { DatabaseModule } from "./module/v1/database/database.module";';
+                break;
+
+            }
         }
       }
 
