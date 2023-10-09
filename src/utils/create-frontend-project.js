@@ -56,25 +56,25 @@ export async function createFrontendProject(projectName, framework, language) {
           language.charAt(0).toUpperCase() + language.slice(1)
         } created successfully! : ${destinationPath}`,
         duration: 1000,
-      })
+      });
 
-      await startSpinner()
+      await startSpinner();
     } else if (framework === "vuejs") {
       switch (language) {
         case "javascript":
           copyFile(
             getTemplateDir(`frontend/vuejs/vuejs-javascript-temp`),
-            destinationPath
-          )
-          break
+            destinationPath,
+          );
+          break;
         case "typescript":
           copyFile(
             getTemplateDir(`frontend/vuejs/vuejs-typescript-temp`),
-            destinationPath
-          )
+            destinationPath,
+          );
 
         default:
-          break
+          break;
       }
 
       // success message
@@ -83,7 +83,7 @@ export async function createFrontendProject(projectName, framework, language) {
           language.charAt(0).toUpperCase() + language.slice(1)
         } created successfully! : ${destinationPath}`,
         duration: 1000,
-      })
+      });
 
       await startSpinner();
     }
