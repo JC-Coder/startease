@@ -57,7 +57,7 @@ export async function promptDatabase() {
       type: 'list',
       name: 'database',
       message: 'select a database',
-      choices: ['MongoDB']
+      choices: ['MongoDB', 'Postgres']
     }
   ]);
 
@@ -84,7 +84,7 @@ export async function promptOrm(database) {
   if (database === 'mongodb') {
     ormChoices = ['Mongoose'];
   } else {
-    ormChoices = ['Typeorm'];
+    ormChoices = ['Typeorm', 'Prisma'];
   }
 
   const ans = await inquirer.prompt([
