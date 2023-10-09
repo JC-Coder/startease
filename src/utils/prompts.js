@@ -1,4 +1,4 @@
-import inquirer from "inquirer"
+import inquirer from "inquirer";
 
 export async function promptProjectName() {
   const ans = await inquirer.prompt([
@@ -7,9 +7,9 @@ export async function promptProjectName() {
       name: "projectName",
       message: "Enter project name:",
     },
-  ])
+  ]);
 
-  return ans.projectName
+  return ans.projectName;
 }
 
 export async function promptProjectStack() {
@@ -20,9 +20,9 @@ export async function promptProjectStack() {
       message: "Choose your stack:",
       choices: ["Frontend", "Backend"],
     },
-  ])
+  ]);
 
-  return ans.projectStack.toLowerCase()
+  return ans.projectStack.toLowerCase();
 }
 
 export async function promptFrontendFramework() {
@@ -33,9 +33,9 @@ export async function promptFrontendFramework() {
       message: "Choose a framework:",
       choices: ["ReactJs"],
     },
-  ])
+  ]);
 
-  return ans.framework.toLowerCase().replace(/ /g, "-")
+  return ans.framework.toLowerCase().replace(/ /g, "-");
 }
 
 export async function promptFrontendLanguage() {
@@ -46,9 +46,9 @@ export async function promptFrontendLanguage() {
       message: "Choose Your Preferred Language:",
       choices: ["JavaScript", "TypeScript"],
     },
-  ])
+  ]);
 
-  return ans.language.toLowerCase().replace(/ /g, "-")
+  return ans.language.toLowerCase().replace(/ /g, "-");
 }
 
 export async function promptStylingOption() {
@@ -59,9 +59,9 @@ export async function promptStylingOption() {
       message: "Choose Your Preferred Styling Option:",
       choices: ["CSS", "TailwindCSS"],
     },
-  ])
+  ]);
 
-  return ans.styling_option.toLowerCase().replace(/ /g, "-")
+  return ans.styling_option.toLowerCase().replace(/ /g, "-");
 }
 
 export async function promptBackendFramework() {
@@ -72,13 +72,13 @@ export async function promptBackendFramework() {
       message: "Choose a framework:",
       choices: ["NestJS", "ExpressJs", "Django"],
     },
-  ])
+  ]);
 
-  return ans.framework.toLowerCase().replace(/ /g, "-")
+  return ans.framework.toLowerCase().replace(/ /g, "-");
 }
 
 export async function promptDatabase(framework) {
-  const choices = framework === "django" ? ["SQLite3"] : ["MongoDB"]
+  const choices = framework === "django" ? ["SQLite3"] : ["MongoDB"];
 
   const ans = await inquirer.prompt([
     {
@@ -87,9 +87,9 @@ export async function promptDatabase(framework) {
       message: "select a database",
       choices,
     },
-  ])
+  ]);
 
-  return ans.database.toLowerCase()
+  return ans.database.toLowerCase();
 }
 
 export async function promptInitDatabase() {
@@ -100,19 +100,19 @@ export async function promptInitDatabase() {
       message: "Initialize Database?",
       default: false,
     },
-  ])
+  ]);
 
-  return ans.initDB
+  return ans.initDB;
 }
 
 export async function promptOrm(database) {
-  database = database?.toLowerCase() ?? ""
-  let ormChoices = []
+  database = database?.toLowerCase() ?? "";
+  let ormChoices = [];
 
   if (database === "mongodb") {
-    ormChoices = ["Mongoose"]
+    ormChoices = ["Mongoose"];
   } else {
-    ormChoices = ["Typeorm"]
+    ormChoices = ["Typeorm"];
   }
 
   const ans = await inquirer.prompt([
@@ -122,7 +122,7 @@ export async function promptOrm(database) {
       message: "select your preferred ORM",
       choices: ormChoices,
     },
-  ])
+  ]);
 
-  return ans.database.toLowerCase()
+  return ans.database.toLowerCase();
 }

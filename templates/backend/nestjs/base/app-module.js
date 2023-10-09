@@ -1,4 +1,4 @@
-export const AppModuleContent =  `
+export const AppModuleContent = `
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -11,4 +11,4 @@ import { UserModule } from './module/v1/user/user.module';
   providers: [AppService],
 })
 export class AppModule {}
-`
+`;

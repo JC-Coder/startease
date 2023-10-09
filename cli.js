@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import figlet from "figlet"
-import { program } from "commander"
-import chalk from "chalk"
-import useGradient from "./src/utils/useGradient.js"
-import { createBackendProject } from "./src/utils/create-backend-project.js"
+import figlet from "figlet";
+import { program } from "commander";
+import chalk from "chalk";
+import useGradient from "./src/utils/useGradient.js";
+import { createBackendProject } from "./src/utils/create-backend-project.js";
 import {
   promptBackendFramework,
   promptDatabase,
@@ -15,64 +15,69 @@ import {
   promptProjectName,
   promptProjectStack,
   promptStylingOption,
-} from "./src/utils/prompts.js"
-import { createFrontendProject } from "./src/utils/create-frontend-project.js"
+} from "./src/utils/prompts.js";
+import { createFrontendProject } from "./src/utils/create-frontend-project.js";
 
-const toolName = "StartEase"
-const jsBackendStacks = ["expressjs", "nestjs"]
+const toolName = "StartEase";
+const jsBackendStacks = ["expressjs", "nestjs"];
 
-program.version("1.0.0").description("StartEase CLI")
+program.version("1.0.0").description("StartEase CLI");
 
 program
   .description("Scaffold a new project with StartEase")
   .action(async () => {
-    await startProject()
-  })
+    await startProject();
+  });
 
-program.parse(process.argv)
+program.parse(process.argv);
 
 async function startProject() {
-  let framework
-  let projectName
-  let projectStack
-  let initDB
-  let database
-  let orm
-  let language
-  let stylingOption
+  let framework;
+  let projectName;
+  let projectStack;
+  let initDB;
+  let database;
+  let orm;
+  let language;
+  let stylingOption;
 
   const initialMsg = `Simplify Project Setup with the. ${chalk.green(
-    toolName
-  )} CLI Tool.`
+    toolName,
+  )} CLI Tool.`;
 
   // render cli title
-  renderTitle()
-  console.log(chalk.white(initialMsg))
+  renderTitle();
+  console.log(chalk.white(initialMsg));
 
-  projectName = await promptProjectName()
-  projectStack = await promptProjectStack()
+  projectName = await promptProjectName();
+  projectStack = await promptProjectStack();
 
   /**
    * start prompts
    */
   if (projectStack === "frontend") {
-    framework = await promptFrontendFramework()
-    language = await promptFrontendLanguage()
-    stylingOption = await promptStylingOption()
+    framework = await promptFrontendFramework();
+    language = await promptFrontendLanguage();
+    stylingOption = await promptStylingOption();
 
-    await createFrontendProject(projectName, framework, language, stylingOption)
+    await createFrontendProject(
+      projectName,
+      framework,
+      language,
+      stylingOption,
+    );
   } else if (projectStack === "backend") {
-    framework = await promptBackendFramework()
+    framework = await promptBackendFramework();
 
-    initDB = await promptInitDatabase()
+    initDB = await promptInitDatabase();
 
     if (initDB) {
-      database = await promptDatabase()
+      database = await promptDatabase();
 
-      orm = await promptOrm(database)
+      orm = await promptOrm(database);
     }
 
-    await createBackendProject(projectName, framework, database, orm)
+    await createBackendProject(projectName, framework, database, orm);
   }
 }
 
@@ -86,9 +91,9 @@ function renderTitle() {
     verticalLayout: "default",
     width: 80,
     whitespaceBreak: true,
-  }
+  };
 
   useGradient({
     title: figlet.textSync("StartEase", figletConfig),
-  })
+  });
 }

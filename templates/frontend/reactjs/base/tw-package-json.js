@@ -28,7 +28,7 @@ export const ReactJsJavaScriptTempWithTailwind = {
     tailwindcss: "^3.3.3",
     autoprefixer: "^10.4.16",
   },
-}
+};
 
 export const ReactJsTypeScriptTempWithTailwind = {
   name: "startease-react-typescript-temp",
@@ -62,4 +62,4 @@ export const ReactJsTypeScriptTempWithTailwind = {
     tailwindcss: "^3.3.3",
     autoprefixer: "^10.4.16",
   },
-}
+};

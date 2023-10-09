@@ -4,33 +4,33 @@ import {
   getTemplateDir,
   removeFile,
   updateFileContent,
-} from "./filemanager.js"
-import path from "path"
-import ora from "ora"
+} from "./filemanager.js";
+import path from "path";
+import ora from "ora";
 import {
   AppTailwindTemplate,
   PostCssConfig,
   TailwindConfig,
   TailwindIndexCSSFile,
-} from "../../templates/frontend/reactjs/base/tailwindConfig.js"
+} from "../../templates/frontend/reactjs/base/tailwindConfig.js";
 import {
   ReactJsJavaScriptTempWithTailwind,
   ReactJsTypeScriptTempWithTailwind,
-} from "../../templates/frontend/reactjs/base/tw-package-json.js"
+} from "../../templates/frontend/reactjs/base/tw-package-json.js";
 
 /**
  * loader
  */
-let stages = [{ message: "Creating Project ...", duration: 2000 }]
+let stages = [{ message: "Creating Project ...", duration: 2000 }];
 
 async function startSpinner() {
   for (const stage of stages) {
-    const spinner = ora(stage.message).start()
-    await new Promise((resolve) => setTimeout(resolve, stage.duration))
-    spinner.succeed(stage.message.replace("...", " completed."))
+    const spinner = ora(stage.message).start();
+    await new Promise((resolve) => setTimeout(resolve, stage.duration));
+    spinner.succeed(stage.message.replace("...", " completed."));
   }
 
-  stages = [{ message: "Creating Project ...", duration: 2000 }]
+  stages = [{ message: "Creating Project ...", duration: 2000 }];
 }
 
 /**
@@ -45,13 +45,13 @@ export async function createFrontendProject(
   projectName,
   framework,
   language,
-  stylingOption
+  stylingOption,
 ) {
   try {
     const destinationPath = path.join(
       process.cwd(),
-      projectName ?? `project-starter-${framework}-template`
-    )
+      projectName ?? `project-starter-${framework}-template`,
+    );
 
     if (framework === "reactjs") {
       //   copy files based on the language chosen
@@ -59,25 +59,25 @@ export async function createFrontendProject(
         case "javascript":
           copyFile(
             getTemplateDir(`frontend/reactjs/react-javascript-temp`),
-            destinationPath
-          )
-          break
+            destinationPath,
+          );
+          break;
         case "typescript":
           copyFile(
             getTemplateDir(`frontend/reactjs/react-typescript-temp`),
-            destinationPath
-          )
+            destinationPath,
+          );
 
         default:
-          break
+          break;
       }
 
       if (stylingOption === "tailwindcss") {
         // update template to include tailwind
         updateFileContent(
           `${destinationPath}/tailwind.config.js`,
-          TailwindConfig
-        )
+          TailwindConfig,
+        );
 
         // update package.json
 
@@ -86,27 +86,27 @@ export async function createFrontendProject(
           JSON.stringify(
             language === "javascript"
               ? ReactJsJavaScriptTempWithTailwind
-              : ReactJsTypeScriptTempWithTailwind
-          )
-        )
+              : ReactJsTypeScriptTempWithTailwind,
+          ),
+        );
 
         // addd autoprefixer and postcss config
 
         createAndUpdateFile(
           `${destinationPath}/postcss.config.js`,
-          PostCssConfig
-        )
+          PostCssConfig,
+        );
 
         // update css files
 
         updateFileContent(
           `${destinationPath}/src/index.css`,
-          TailwindIndexCSSFile
-        )
+          TailwindIndexCSSFile,
+        );
 
         // remove files
 
-        removeFile(`${destinationPath}/src/App.css`)
+        removeFile(`${destinationPath}/src/App.css`);
 
         // update App.jsx file
 
@@ -114,8 +114,8 @@ export async function createFrontendProject(
           `${destinationPath}/src/App.${
             language === "javascript" ? "jsx" : "tsx"
           }`,
-          AppTailwindTemplate
-        )
+          AppTailwindTemplate,
+        );
       }
 
       // success message
@@ -124,11 +124,11 @@ export async function createFrontendProject(
           language.charAt(0).toUpperCase() + language.slice(1)
         } and ${stylingOption.toUpperCase()} created successfully! : ${destinationPath}`,
         duration: 1000,
-      })
+      });
 
-      await startSpinner()
+      await startSpinner();
     }
   } catch (e) {
-    console.log(`Error Creating Frontend Project: ${e}`)
+    console.log(`Error Creating Frontend Project: ${e}`);
   }
 }

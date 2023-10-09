@@ -10,7 +10,7 @@ export default {
     plugins: [],
   }
   
-  `
+  `;
 
 export const PostCssConfig = `
 export default {
@@ -20,12 +20,12 @@ export default {
   },
 }
 
-`
+`;
 
 export const TailwindIndexCSSFile = `
 @tailwind base;
 @tailwind components;
-@tailwind utilities;`
+@tailwind utilities;`;
 
 export const AppTailwindTemplate = `
 import { useState } from "react"
@@ -63,4 +63,4 @@ function App() {
 
 export default App
 
-`
+`;
