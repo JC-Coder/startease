@@ -75,3 +75,11 @@ export const NEST_MONGOOSE_PACKAGE = {
         "mongoose": "^7.5.2",
     }
 }
+
+export const NEST_TYPEORM_PACKAGE = {
+    "dependencies": {
+        "typeorm": "^0.3.17",
+        "@nestjs/typeorm": "^10.0.0",
+        "pg": "^8.11.3",
+    }
+}
