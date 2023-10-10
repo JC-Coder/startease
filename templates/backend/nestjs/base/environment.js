@@ -19,4 +19,4 @@ export const ENVIRONMENT: IEnvironment = {
   },
  {{environment_content}}
 };
-`
+`;

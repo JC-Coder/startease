@@ -1,11 +1,11 @@
-import mongoose from 'mongoose';
-import { ENVIRONMENT } from './environment';
+import mongoose from "mongoose";
+import { ENVIRONMENT } from "./environment";
 
 export const connectDb = async () => {
   try {
     const conn = await mongoose.connect(ENVIRONMENT.DB.URL, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     });
 
     console.log(`MongoDB Connected: ${conn.connection.host}`);

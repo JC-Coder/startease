@@ -1,4 +1,4 @@
-export const EXPRESSJS_SERVER_TEMPLATE =  `
+export const EXPRESSJS_SERVER_TEMPLATE = `
 import {ENVIRONMENT} from "./common/config/environment.js";
 import express from 'express';
 import AppError from "./common/utils/appError.js";
@@ -6,6 +6,7 @@ import {setRoutes} from "./modules/routes/index.js";
 import {catchAsync, handleError, timeoutMiddleware} from "./common/utils/errorHandler.js";
 import cors from "cors";
 import helmet from "helmet";
+import compression from "compression";
 import {stream} from "./common/utils/logger.js";
 import morgan from 'morgan'
 {{database_config_import}}
@@ -25,6 +26,7 @@ app.use(cors());
 app.use(express.json({limit: "50mb"}));
 app.use(express.urlencoded({limit: "50mb", extended: true}));
 app.disable("x-powered-by");
+app.use(compression());
 
 /**
  * Logger Middleware
@@ -76,4 +78,4 @@ app.listen(port, () => {
         {{database_config}}
     }
 );
-`
+`;
