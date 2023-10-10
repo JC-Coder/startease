@@ -29,7 +29,10 @@ import { DJANGO_WSGI } from "../../templates/backend/django/base/wsgi.js";
 import { DJANGO_ASGI } from "../../templates/backend/django/base/asgi.js";
 import { DJANGO_SETTINGS } from "../../templates/backend/django/base/settings.js";
 import { DJANGO_ENV_VARIABLES } from "../../templates/backend/django/base/env.js";
-import { DJANGO_POSTGRES_SETUP, DJANGO_SQLITE_SETUP} from "../../templates/backend/django/base/database.js";
+import {
+  DJANGO_POSTGRES_SETUP,
+  DJANGO_SQLITE_SETUP,
+} from "../../templates/backend/django/base/database.js";
 
 // third-party imports
 
@@ -293,39 +296,32 @@ export async function createBackendProject(
               {
                 projectName,
                 DATABASE_IMPORT: "import dj_database_url",
-                DATABASE_SETUP: DJANGO_POSTGRES_SETUP
-              }
+                DATABASE_SETUP: DJANGO_POSTGRES_SETUP,
+              },
             );
 
-            updateFileContent(
-              `${destinationPath}/.env`,
-              DJANGO_ENV_VARIABLES,
-              {
-                SECRET_KEY: crypto.randomUUID().split("-").join(""),
-                DATABASE_ENV: "DATABASE_URL=postgres://username:password@localhost:5432"
-              }
-            );
+            updateFileContent(`${destinationPath}/.env`, DJANGO_ENV_VARIABLES, {
+              SECRET_KEY: crypto.randomUUID().split("-").join(""),
+              DATABASE_ENV:
+                "DATABASE_URL=postgres://username:password@localhost:5432",
+            });
             break;
         }
       } else {
-          updateFileContent(
-            `${destinationPath}/${projectName}/settings.py`,
-            DJANGO_SETTINGS,
-            {
-              projectName,
-              DATABASE_IMPORT: "",
-              DATABASE_SETUP: DJANGO_SQLITE_SETUP
-            }
-          );
+        updateFileContent(
+          `${destinationPath}/${projectName}/settings.py`,
+          DJANGO_SETTINGS,
+          {
+            projectName,
+            DATABASE_IMPORT: "",
+            DATABASE_SETUP: DJANGO_SQLITE_SETUP,
+          },
+        );
 
-          updateFileContent(
-            `${destinationPath}/.env`,
-            DJANGO_ENV_VARIABLES,
-            {
-              SECRET_KEY: crypto.randomUUID().split("-").join(""),
-              DATABASE_ENV: ""
-            }
-          );
+        updateFileContent(`${destinationPath}/.env`, DJANGO_ENV_VARIABLES, {
+          SECRET_KEY: crypto.randomUUID().split("-").join(""),
+          DATABASE_ENV: "",
+        });
       }
 
       // add updates to django starter files
@@ -353,8 +349,6 @@ export async function createBackendProject(
           projectName,
         },
       );
-
-
 
       if (shell.which("git")) {
         // initialize git for the final source

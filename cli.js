@@ -64,13 +64,11 @@ async function startProject() {
     initDB = await promptInitDatabase();
 
     if (initDB) {
-
-      database = await promptDatabase(framework)
+      database = await promptDatabase(framework);
 
       if (jsBackendStacks.includes(framework)) {
-        orm = await promptOrm(database)
+        orm = await promptOrm(database);
       }
-
     }
 
     await createBackendProject(projectName, framework, database, orm);

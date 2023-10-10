@@ -4,12 +4,11 @@ export const DJANGO_POSTGRES_SETUP = `{
       conn_max_age=600,
       conn_health_checks=True,
   )
-}`
-
+}`;
 
 export const DJANGO_SQLITE_SETUP = `{
   'default': {
       'ENGINE': 'django.db.backends.sqlite3',
       'NAME': BASE_DIR / 'db.sqlite3',
   }
-}`
+}`;

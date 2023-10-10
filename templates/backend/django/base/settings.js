@@ -108,5 +108,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Uncomment these when going into production environment.
 
 # CSRF_COOKIE_SECURE = True
-`
-
+`;
