@@ -1,6 +1,7 @@
 export const DJANGO_SETTINGS = `from pathlib import Path
 from decouple import config
 import os
+{{DATABASE_IMPORT}}
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -61,12 +62,7 @@ WSGI_APPLICATION = '{{projectName}}.wsgi.application'
 
 # Database
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DATABASES = {{DATABASE_SETUP}}
 
 
 # Password validation
@@ -108,4 +104,8 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+# Uncomment these when going into production environment.
+
+# CSRF_COOKIE_SECURE = True
 `;
