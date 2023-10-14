@@ -1,6 +1,22 @@
-import { copyFile, getTemplateDir } from "./filemanager.js";
+import {
+  copyFile,
+  createAndUpdateFile,
+  getTemplateDir,
+  removeFile,
+  updateFileContent,
+} from "./filemanager.js";
 import path from "path";
 import ora from "ora";
+import {
+  AppTailwindTemplate,
+  PostCssConfig,
+  TailwindConfig,
+  TailwindIndexCSSFile,
+} from "../../templates/frontend/reactjs/base/tailwindConfig.js";
+import {
+  ReactJsJavaScriptTempWithTailwind,
+  ReactJsTypeScriptTempWithTailwind,
+} from "../../templates/frontend/reactjs/base/tw-package-json.js";
 
 /**
  * loader
@@ -22,9 +38,15 @@ async function startSpinner() {
  * @param {string} framework
  * @param {string} projectName
  * @param {string} language - {typescript, javascript}
+ * @param {string} stylingOption - {CSS, TailwindCSS}
  */
 
-export async function createFrontendProject(projectName, framework, language) {
+export async function createFrontendProject(
+  projectName,
+  framework,
+  language,
+  stylingOption,
+) {
   try {
     const destinationPath = path.join(
       process.cwd(),
@@ -50,11 +72,57 @@ export async function createFrontendProject(projectName, framework, language) {
           break;
       }
 
+      if (stylingOption === "tailwindcss") {
+        // update template to include tailwind
+        updateFileContent(
+          `${destinationPath}/tailwind.config.js`,
+          TailwindConfig,
+        );
+
+        // update package.json
+
+        updateFileContent(
+          `${destinationPath}/package.json`,
+          JSON.stringify(
+            language === "javascript"
+              ? ReactJsJavaScriptTempWithTailwind
+              : ReactJsTypeScriptTempWithTailwind,
+          ),
+        );
+
+        // addd autoprefixer and postcss config
+
+        createAndUpdateFile(
+          `${destinationPath}/postcss.config.js`,
+          PostCssConfig,
+        );
+
+        // update css files
+
+        updateFileContent(
+          `${destinationPath}/src/index.css`,
+          TailwindIndexCSSFile,
+        );
+
+        // remove files
+
+        removeFile(`${destinationPath}/src/App.css`);
+
+        // update App.jsx file
+
+        updateFileContent(
+          `${destinationPath}/src/App.${
+            language === "javascript" ? "jsx" : "tsx"
+          }`,
+          AppTailwindTemplate,
+        );
+      }
+
       // success message
       stages.push({
         message: `Frontend - ReactJS project with ${
           language.charAt(0).toUpperCase() + language.slice(1)
-        } created successfully! : ${destinationPath}`,
+        } and ${stylingOption.toUpperCase()} created successfully! : ${destinationPath}`,
         duration: 1000,
       });
 

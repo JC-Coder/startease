@@ -14,6 +14,7 @@ import {
   promptOrm,
   promptProjectName,
   promptProjectStack,
+  promptStylingOption,
 } from "./src/utils/prompts.js";
 import { createFrontendProject } from "./src/utils/create-frontend-project.js";
 
@@ -38,6 +39,7 @@ async function startProject() {
   let database;
   let orm;
   let language;
+  let stylingOption;
 
   const initialMsg = `Simplify Project Setup with the. ${chalk.green(
     toolName,
@@ -56,8 +58,14 @@ async function startProject() {
   if (projectStack === "frontend") {
     framework = await promptFrontendFramework();
     language = await promptFrontendLanguage();
+    stylingOption = await promptStylingOption();
 
-    await createFrontendProject(projectName, framework, language);
+    await createFrontendProject(
+      projectName,
+      framework,
+      language,
+      stylingOption,
+    );
   } else if (projectStack === "backend") {
     framework = await promptBackendFramework();
 
