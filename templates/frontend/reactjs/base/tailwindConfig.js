@@ -25,7 +25,13 @@ export default {
 export const TailwindIndexCSSFile = `
 @tailwind base;
 @tailwind components;
-@tailwind utilities;`;
+@tailwind utilities;
+
+:root {
+  background-color: rgb(0 0 0 0.9)
+}
+
+`;
 
 export const AppTailwindTemplate = `
 import { useState } from "react"
@@ -37,7 +43,7 @@ function App() {
 
   return (
     <main className="max-w-[1280px] mx-auto my-0 p-8 text-center">
-      <div>
+      <div className="flex items-center justify-center">
         <a href="https://github.com/JC-Coder/startease" target="_blank">
           <img src={StartEaseLogo} className="h-24 p-6 [will-change:filter] [transition:filter] duration-300" alt="StartEase logo" />
         </a>
@@ -47,7 +53,9 @@ function App() {
       </div>
       <h1>StartEase + React + TailwindCSS</h1>
       <div className="p-8">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={() => setCount((count) => count + 1)}
+        className="border border-gray-500 px-3 py-2 rounded-md "
+        >
           count is {count}
         </button>
         <p>
