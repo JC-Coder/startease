@@ -56,57 +56,48 @@ class BaseController extends Controller
 
 
 export const LARAVEL_BASE_CONTROLLER = `
-<?php
+namespace App\Http\Controllers\API\V1;
 
-
-namespace App\\Http\\Controllers;
-
-
-use Illuminate\\Http\\Request;
-use App\\Http\\Controllers\\Controller as Controller;
-
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller as Controller;
 
 class BaseController extends Controller
 {
     /**
-     * success response method.
+     * Success response method.
      *
-     * @return \\Illuminate\\Http\\JsonResponse
+     * @return \Illuminate\Http\Response
      */
-    public function sendResponse($result, $message, $status=200)
+    public function sendResponse($blade_file, $result, $message, $status = 200)
     {
-    	$response = [
+        $response = [
             'status' => $status,
             'success' => true,
-            'data'    => $result,
+            'data' => $result,
             'message' => $message,
         ];
 
-
-        return response()->json($response, $status);
+        return view($blade_file)->with('response', $response);
     }
 
-
     /**
-     * return error response.
+     * Error response.
      *
-     * @return \\Illuminate\\Http\\JsonResponse
+     * @return \Illuminate\Http\Response
      */
-    public function sendError($error, $errorMessages = [], $code = 404)
+    public function sendError($blade_file, $error, $errorMessages = [], $code = 404)
     {
-    	$response = [
+        $response = [
             'status' => $code,
             'success' => false,
             'message' => $error,
         ];
 
-
-        if(!empty($errorMessages)){
+        if (!empty($errorMessages)) {
             $response['data'] = $errorMessages;
         }
 
-
-        return response()->json($response, $code);
+        return view($blade_file)->with('response', $response);
     }
 }
 `;
