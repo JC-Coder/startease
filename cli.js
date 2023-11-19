@@ -16,7 +16,7 @@ import {
   promptProjectStack,
 } from "./src/utils/prompts.js";
 import { createFrontendProject } from "./src/utils/create-frontend-project.js";
-import { exit } from "shelljs";
+import { validateProjectName } from "./src/utils/helper.js";
 
 const toolName = "StartEase";
 const jsBackendStacks = ["expressjs", "nestjs"];
@@ -49,15 +49,8 @@ async function startProject() {
   console.log(chalk.white(initialMsg));
 
   projectName = await promptProjectName();
-  if (projectName === "") {
-    console.log(`Project name can't be empty.`);
-    exit()
-  }
-  if (!/^[a-z0-9-._~]+$/.test(projectName)) {
-    console.log(`Project name can only contain lowercase letters, numbers, "-", ".", "_" and "~".`);
-    exit();
-  }
-  
+  validateProjectName(projectName);
+
   projectStack = await promptProjectStack();
 
   /**
