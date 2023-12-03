@@ -59,6 +59,16 @@ export async function createFrontendProject(projectName, framework, language) {
       });
 
       await startSpinner();
+    } else if (framework === "html-x-css-x-javascript") {
+      copyFile(getTemplateDir(`frontend/html-css-javascript`), destinationPath);
+
+      // success message
+      stages.push({
+        message: `Frontend - plain html with css and javascript created successfully! : ${destinationPath}`,
+        duration: 1000,
+      });
+
+      await startSpinner();
     }
   } catch (e) {
     console.log(`Error Creating Frontend Project: ${e}`);
