@@ -47,7 +47,7 @@ The following project templates are available:
     - [x] React App (Javascript / TypeScript)
     - [ ] Vue.js App
     - [ ] Angular App
-    - [ ] HTML/CSS/JavaScript Template
+    - [x] HTML/CSS/JavaScript Template
 
 - **Backend**:
     - [x] Express.js Server

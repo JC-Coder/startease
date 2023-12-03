@@ -9,13 +9,13 @@ import {
   promptBackendFramework,
   promptDatabase,
   promptFrontendFramework,
-  promptFrontendLanguage,
   promptInitDatabase,
   promptOrm,
   promptProjectName,
   promptProjectStack,
 } from "./src/utils/prompts.js";
 import { createFrontendProject } from "./src/utils/create-frontend-project.js";
+import { validateProjectName } from "./src/utils/helper.js";
 
 const toolName = "StartEase";
 const jsBackendStacks = ["expressjs", "nestjs"];
@@ -48,6 +48,8 @@ async function startProject() {
   console.log(chalk.white(initialMsg));
 
   projectName = await promptProjectName();
+  validateProjectName(projectName);
+
   projectStack = await promptProjectStack();
 
   /**
@@ -55,9 +57,12 @@ async function startProject() {
    */
   if (projectStack === "frontend") {
     framework = await promptFrontendFramework();
-    language = await promptFrontendLanguage();
 
-    await createFrontendProject(projectName, framework, language);
+    if (framework === "html-x-css-x-javascript") {
+      return await createFrontendProject(projectName, framework, "javascript");
+    }
+
+    return await createFrontendProject(projectName, framework, language);
   } else if (projectStack === "backend") {
     framework = await promptBackendFramework();
 
