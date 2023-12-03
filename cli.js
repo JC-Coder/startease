@@ -58,9 +58,12 @@ async function startProject() {
    */
   if (projectStack === "frontend") {
     framework = await promptFrontendFramework();
-    language = await promptFrontendLanguage();
-
-    await createFrontendProject(projectName, framework, language);
+    console.log("testing:", framework);
+    if (framework !== "noframework") {
+      language = await promptFrontendLanguage();
+      return await createFrontendProject(projectName, framework, language);
+    }
+    await createFrontendProject(projectName, framework);
   } else if (projectStack === "backend") {
     framework = await promptBackendFramework();
 

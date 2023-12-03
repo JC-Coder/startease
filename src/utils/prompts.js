@@ -31,7 +31,7 @@ export async function promptFrontendFramework() {
       type: "list",
       name: "framework",
       message: "Choose a framework:",
-      choices: ["ReactJs"],
+      choices: ["ReactJs", "NoFramework"],
     },
   ]);
 
