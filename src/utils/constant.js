@@ -1,3 +1,3 @@
 export const CLI_CONSTANTS = {
-  statBaseUrl: "http://localhost:3000",
+  statBaseUrl: "https://startease-stat-api.adaptable.app",
 };
