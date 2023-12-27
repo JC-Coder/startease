@@ -9,6 +9,7 @@ import {
   promptBackendFramework,
   promptDatabase,
   promptFrontendFramework,
+  promptFrontendLanguage,
   promptInitDatabase,
   promptOrm,
   promptProjectName,
@@ -56,6 +57,7 @@ async function startProject() {
    * start prompts
    */
   if (projectStack === "frontend") {
+    language = await promptFrontendLanguage()
     framework = await promptFrontendFramework();
 
     if (framework === "html-x-css-x-javascript") {

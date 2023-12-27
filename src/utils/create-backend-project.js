@@ -33,13 +33,12 @@ import {
   DJANGO_POSTGRES_SETUP,
   DJANGO_SQLITE_SETUP,
 } from "../../templates/backend/django/base/database.js";
-
-// third-party imports
-
 import ora from "ora";
 import shell from "shelljs";
 import crypto from "crypto";
-import { processDependenciesInstall } from "./helper.js";
+import { isConnectedToInternet, processDependenciesInstall } from "./helper.js";
+import { axiosInstance } from "./axios.js";
+import { CLI_CONSTANTS } from "./constant.js";
 
 /**
  * loader
@@ -359,6 +358,14 @@ export async function createBackendProject(
       message: `Backend project created successfully! : ${destinationPath}`,
       duration: 1000,
     });
+
+    // update stat
+    if (await isConnectedToInternet()) {
+      await axiosInstance(CLI_CONSTANTS.statBaseUrl).post("/stat", {
+        app: "startease",
+        framework,
+      });
+    }
 
     await startSpinner();
   } catch (e) {

@@ -18,6 +18,13 @@ export function validateProjectName(projectName) {
 }
 
 /**
+ * check user is connected to internet
+ */
+export async function isConnectedToInternet() {
+  return await isOnline();
+}
+
+/**
  * process dependencies install
  */
 export async function processDependenciesInstall(framework, destinationPath) {
@@ -27,10 +34,8 @@ export async function processDependenciesInstall(framework, destinationPath) {
     return;
   }
 
-  const isConnectedToInternet = await isOnline();
-
   // check user has internet connection
-  if (isConnectedToInternet) {
+  if (await isConnectedToInternet()) {
     console.log("===== Installing Dependencies ...... ===== ");
 
     switch (framework) {
