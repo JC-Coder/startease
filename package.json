@@ -22,12 +22,14 @@
   "author": "jc coder",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.6.3",
     "chalk": "^5.3.0",
     "commander": "^11.0.0",
     "figlet": "^1.6.0",
     "fs-extra": "^11.1.1",
     "gradient-string": "^2.0.2",
     "inquirer": "^8.2.6",
+    "is-online": "^10.0.0",
     "ora": "^7.0.1",
     "shelljs": "^0.8.5",
     "simple-git": "^3.19.1"

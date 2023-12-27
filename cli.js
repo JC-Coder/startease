@@ -9,6 +9,7 @@ import {
   promptBackendFramework,
   promptDatabase,
   promptFrontendFramework,
+  promptFrontendLanguage,
   promptInitDatabase,
   promptOrm,
   promptProjectName,
@@ -16,6 +17,7 @@ import {
 } from "./src/utils/prompts.js";
 import { createFrontendProject } from "./src/utils/create-frontend-project.js";
 import { validateProjectName } from "./src/utils/helper.js";
+import { sendQueuedStats } from "./src/utils/stat.js";
 
 const toolName = "StartEase";
 const jsBackendStacks = ["expressjs", "nestjs"];
@@ -52,10 +54,14 @@ async function startProject() {
 
   projectStack = await promptProjectStack();
 
+  // process sending of stats in background
+  sendQueuedStats();
+
   /**
    * start prompts
    */
   if (projectStack === "frontend") {
+    language = await promptFrontendLanguage();
     framework = await promptFrontendFramework();
 
     if (framework === "html-x-css-x-javascript") {

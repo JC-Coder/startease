@@ -5,7 +5,7 @@ import {
   getTemplateDir,
   updateFileContent,
   writeToFile,
-} from "./filemanager.js";
+} from "./file-manager.js";
 import { AppModuleContent } from "../../templates/backend/nestjs/base/app-module.js";
 import path from "path";
 import {
@@ -33,12 +33,12 @@ import {
   DJANGO_POSTGRES_SETUP,
   DJANGO_SQLITE_SETUP,
 } from "../../templates/backend/django/base/database.js";
-
-// third-party imports
-
 import ora from "ora";
 import shell from "shelljs";
 import crypto from "crypto";
+import { isConnectedToInternet, processDependenciesInstall } from "./helper.js";
+import { axiosInstance } from "./axios.js";
+import { CLI_CONSTANTS } from "./constant.js";
 
 /**
  * loader
@@ -162,14 +162,6 @@ export async function createBackendProject(
         `${destinationPath}/package.json`,
         JSON.stringify(packageJson),
       );
-
-      // success message
-      stages.push({
-        message: `Backend project created successfully! : ${destinationPath}`,
-        duration: 1000,
-      });
-
-      await startSpinner();
     } else if (framework === "expressjs") {
       let database_config = "";
       let database_config_import = "";
@@ -251,14 +243,6 @@ export async function createBackendProject(
         `${destinationPath}/package.json`,
         JSON.stringify(ExpressJsPackageJsonTemplate),
       );
-
-      // success message
-      stages.push({
-        message: `Backend project created successfully! : ${destinationPath}`,
-        duration: 1000,
-      });
-
-      await startSpinner();
     } else if (framework === "django") {
       // django does not support some file namings so the name has to be parsed into a valid python identifier.
       projectName = projectName.replaceAll(/[-\. ]/g, "");
@@ -364,15 +348,26 @@ export async function createBackendProject(
         shell.exec(`git commit -m "Initial commit"`);
         shell.cd("-");
       }
-
-      // success message
-      stages.push({
-        message: `Backend project created successfully! : ${destinationPath}`,
-        duration: 1000,
-      });
-
-      await startSpinner();
     }
+
+    // process dependencies install
+    await processDependenciesInstall(framework, destinationPath);
+
+    // success message
+    stages.push({
+      message: `Backend project created successfully! : ${destinationPath}`,
+      duration: 1000,
+    });
+
+    // update stat
+    if (await isConnectedToInternet()) {
+      await axiosInstance(CLI_CONSTANTS.statBaseUrl).post("/stat", {
+        app: "startease",
+        framework,
+      });
+    }
+
+    await startSpinner();
   } catch (e) {
     console.log(`Error Creating Backend Project: ${e}`);
   }
