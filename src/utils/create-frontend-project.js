@@ -1,4 +1,4 @@
-import { copyFile, getTemplateDir } from "./filemanager.js";
+import { copyFile, getTemplateDir } from "./file-manager.js";
 import path from "path";
 import ora from "ora";
 

@@ -114,3 +114,17 @@ export async function promptOrm(database) {
 
   return ans.database.toLowerCase();
 }
+
+export async function promptDependenciesInstall() {
+  const result = await inquirer.prompt([
+    {
+      type: "confirm",
+      name: "installDependencies",
+      message:
+        "Do you want to install project dependencies ? (you must have an active internet connection)",
+      default: false,
+    },
+  ]);
+
+  return result.installDependencies;
+}
