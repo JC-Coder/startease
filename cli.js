@@ -16,6 +16,8 @@ import {
   promptProjectStack,
 } from "./src/utils/prompts.js";
 import { createFrontendProject } from "./src/utils/create-frontend-project.js";
+import { validateProjectName } from "./src/utils/helper.js";
+import { sendQueuedStats } from "./src/utils/stat.js";
 
 const toolName = "StartEase";
 const jsBackendStacks = ["expressjs", "nestjs"];
@@ -48,25 +50,36 @@ async function startProject() {
   console.log(chalk.white(initialMsg));
 
   projectName = await promptProjectName();
+  validateProjectName(projectName);
+
   projectStack = await promptProjectStack();
+
+  // process sending of stats in background
+  sendQueuedStats();
 
   /**
    * start prompts
    */
   if (projectStack === "frontend") {
-    framework = await promptFrontendFramework();
     language = await promptFrontendLanguage();
+    framework = await promptFrontendFramework();
 
-    await createFrontendProject(projectName, framework, language);
+    if (framework === "html-x-css-x-javascript") {
+      return await createFrontendProject(projectName, framework, "javascript");
+    }
+
+    return await createFrontendProject(projectName, framework, language);
   } else if (projectStack === "backend") {
     framework = await promptBackendFramework();
 
     initDB = await promptInitDatabase();
 
     if (initDB) {
-      database = await promptDatabase();
+      database = await promptDatabase(framework);
 
-      orm = await promptOrm(database);
+      if (jsBackendStacks.includes(framework)) {
+        orm = await promptOrm(database);
+      }
     }
 
     await createBackendProject(projectName, framework, database, orm);

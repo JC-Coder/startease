@@ -31,7 +31,7 @@ export async function promptFrontendFramework() {
       type: "list",
       name: "framework",
       message: "Choose a framework:",
-      choices: ["ReactJs", "VueJs"],
+      choices: ["ReactJs", "Html x Css x Javascript", "VueJs"],
     },
   ]);
 
@@ -65,7 +65,8 @@ export async function promptBackendFramework() {
 }
 
 export async function promptDatabase(framework) {
-  const choices = framework === "django" ? ["SQLite3"] : ["MongoDB"];
+  const choices =
+    framework === "django" ? ["SQLite3", "PostgreSQL"] : ["MongoDB"];
 
   const ans = await inquirer.prompt([
     {
@@ -112,4 +113,18 @@ export async function promptOrm(database) {
   ]);
 
   return ans.database.toLowerCase();
+}
+
+export async function promptDependenciesInstall() {
+  const result = await inquirer.prompt([
+    {
+      type: "confirm",
+      name: "installDependencies",
+      message:
+        "Do you want to install project dependencies ? (you must have an active internet connection)",
+      default: false,
+    },
+  ]);
+
+  return result.installDependencies;
 }
