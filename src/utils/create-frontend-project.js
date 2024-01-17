@@ -22,7 +22,7 @@ async function startSpinner() {
 
 /**
  * function to create frontend projects
- * @param {string} framework
+ * @param {string} framework - {reactjs, vuejs}
  * @param {string} projectName
  * @param {string} language - {typescript, javascript}
  */
@@ -62,6 +62,29 @@ export async function createFrontendProject(projectName, framework, language) {
       });
 
       await startSpinner();
+    } else if (framework === "vuejs") {
+      switch (language) {
+        case "javascript":
+          copyFile(
+            getTemplateDir(`frontend/vuejs/vuejs-javascript-temp`),
+            destinationPath,
+          );
+          break;
+        case "typescript":
+          copyFile(
+            getTemplateDir(`frontend/vuejs/vuejs-typescript-temp`),
+            destinationPath,
+          );
+
+        default:
+          break;
+      }
+
+      // success message
+      stages.push({
+        message: `Frontend - VueJs project with ${
+          language.charAt(0).toUpperCase() + language.slice(1)
+        } created successfully! : ${destinationPath}`,
     } else if (framework === "html-x-css-x-javascript") {
       copyFile(getTemplateDir(`frontend/html-css-javascript`), destinationPath);
 
