@@ -144,36 +144,3 @@ export function createFolder(path) {
 export const getTemplateDir = (filePath) => {
   return path.join(__dirname, "..", "../templates", filePath);
 };
-
-export const handleAppConfigs = async (path, projectName) => {
-
-  if (projectName.includes(" ")) {
-    projectName = projectName.split(" ").join("-");
-  }
-  //app.json
-  // const path = "./templates/app/react-native";
-  const pathToAppJson = path + "/app.json"
-  let appJson = await fs.readJson(pathToAppJson);
-  appJson.expo.name = projectName;
-  appJson.expo.slug = projectName;
-
-  //package.lock.json
-  const pathToPackageLock = path + "/package-lock.json"
-  let PackageLock = await fs.readJson(pathToPackageLock);
-  PackageLock.name = projectName;
-  PackageLock.packages[""].name = projectName;
-
-  //package.json
-  const pathToPackage = path + "/package.json"
-  let Package = await fs.readJson(pathToPackage);
-  Package.name = projectName;
-
-  //save the edited config
-  saveAppConfig(pathToAppJson, appJson);
-  saveAppConfig(pathToPackage, Package);
-  saveAppConfig(pathToPackageLock, PackageLock);
-}
-
-const saveAppConfig = (path, config) => {
-  fs.writeFile(path, JSON.stringify(config, null, 4));
-}
