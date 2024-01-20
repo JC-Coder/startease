@@ -6,6 +6,7 @@ import chalk from "chalk";
 import useGradient from "./src/utils/useGradient.js";
 import { createBackendProject } from "./src/utils/create-backend-project.js";
 import {
+  promptAppFramework,
   promptBackendFramework,
   promptDatabase,
   promptFrontendFramework,
@@ -18,6 +19,7 @@ import {
 import { createFrontendProject } from "./src/utils/create-frontend-project.js";
 import { validateProjectName } from "./src/utils/helper.js";
 import { sendQueuedStats } from "./src/utils/stat.js";
+import { createAppProject } from "./src/utils/create-app-project.js";
 
 const toolName = "StartEase";
 const jsBackendStacks = ["expressjs", "nestjs"];
@@ -83,6 +85,12 @@ async function startProject() {
     }
 
     await createBackendProject(projectName, framework, database, orm);
+  } else if (projectStack === "app") {
+    framework = await promptAppFramework();
+
+    if (framework === "react-native") {
+      return await createAppProject(projectName, framework);
+    }
   }
 }
 
