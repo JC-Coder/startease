@@ -18,7 +18,7 @@ export async function promptProjectStack() {
       type: "list",
       name: "projectStack",
       message: "Choose your stack:",
-      choices: ["Frontend", "Backend"],
+      choices: ["Frontend", "Backend", "App"],
     },
   ]);
 
@@ -127,4 +127,17 @@ export async function promptDependenciesInstall() {
   ]);
 
   return result.installDependencies;
+}
+
+export async function promptAppFramework() {
+  const ans = await inquirer.prompt([
+    {
+      type: "list",
+      name: "framework",
+      message: "Choose an app framework:",
+      choices: ["React-Native"],
+    },
+  ]);
+
+  return ans.framework.toLowerCase();
 }
