@@ -31,7 +31,7 @@ export async function promptFrontendFramework() {
       type: "list",
       name: "framework",
       message: "Choose a framework:",
-      choices: ["ReactJs", "Html x Css x Javascript"],
+      choices: ["ReactJs", "Html x Css x Javascript", "VueJs"],
     },
   ]);
 
