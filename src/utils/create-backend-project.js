@@ -160,7 +160,7 @@ export async function createBackendProject(
       // update packageJsonFile
       createAndUpdateFile(
         `${destinationPath}/package.json`,
-        JSON.stringify(packageJson),
+        JSON.stringify(packageJson, null, "  "),
       );
 
       // success message
@@ -249,7 +249,7 @@ export async function createBackendProject(
       // add package json file
       createAndUpdateFile(
         `${destinationPath}/package.json`,
-        JSON.stringify(ExpressJsPackageJsonTemplate),
+        JSON.stringify(ExpressJsPackageJsonTemplate, null, "  "),
       );
 
       // success message
