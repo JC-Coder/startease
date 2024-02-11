@@ -1,9 +1,7 @@
 import { copyFile, getTemplateDir } from "./file-manager.js";
 import path from "path";
 import ora from "ora";
-import { isConnectedToInternet } from "./helper.js";
-import { axiosInstance } from "./axios.js";
-import { CLI_CONSTANTS } from "./constant.js";
+import { sendStat } from "./stat.js";
 
 /**
  * loader
@@ -98,12 +96,8 @@ export async function createFrontendProject(projectName, framework, language) {
     }
 
     // update stat
-    if (await isConnectedToInternet()) {
-      await axiosInstance(CLI_CONSTANTS.statBaseUrl).post("/stat", {
-        app: "startease",
-        framework,
-      });
-    }
+    sendStat("startease", framework).then(() => {
+    })
   } catch (e) {
     console.log(`Error Creating Frontend Project: ${e}`);
   }

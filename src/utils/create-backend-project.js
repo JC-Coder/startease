@@ -36,9 +36,8 @@ import {
 import ora from "ora";
 import shell from "shelljs";
 import crypto from "crypto";
-import { isConnectedToInternet, processDependenciesInstall } from "./helper.js";
-import { axiosInstance } from "./axios.js";
-import { CLI_CONSTANTS } from "./constant.js";
+import {  processDependenciesInstall } from "./helper.js";
+import { sendStat } from "./stat.js";
 
 /**
  * loader
@@ -359,13 +358,9 @@ export async function createBackendProject(
       duration: 1000,
     });
 
-    // update stat
-    if (await isConnectedToInternet()) {
-      await axiosInstance(CLI_CONSTANTS.statBaseUrl).post("/stat", {
-        app: "startease",
-        framework,
-      });
-    }
+    // send stat
+    sendStat("startease", framework).then(() => {
+    })
 
     await startSpinner();
   } catch (e) {
