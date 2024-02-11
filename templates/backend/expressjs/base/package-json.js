@@ -2,10 +2,14 @@ export const ExpressJsPackageJsonTemplate = {
   name: "startease-expressjs-project",
   version: "1.0.0",
   description: "Expressjs project generated using startease CLI tool",
-  main: "index.js",
   type: "module",
   scripts: {
     dev: "node --watch src/server.js",
+    start: "node src/server.js",
+    "format:check": "prettier --check .",
+    "format:fix": "prettier --write .",
+    lint: "eslint .",
+    "lint:fix": "eslint --fix .",
   },
   author: "",
   license: "ISC",
@@ -17,5 +21,10 @@ export const ExpressJsPackageJsonTemplate = {
     helmet: "^7.0.0",
     morgan: "^1.10.0",
     winston: "^3.10.0",
+  },
+  devDependencies: {
+    eslint: "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    prettier: "^3.1.1",
   },
 };
