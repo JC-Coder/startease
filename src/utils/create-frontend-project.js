@@ -84,7 +84,7 @@ export async function createFrontendProject(projectName, framework, language) {
       stages.push({
         message: `Frontend - VueJs project with ${
           language.charAt(0).toUpperCase() + language.slice(1)
-        } created successfully! : ${destinationPath}`,
+        } created successfully! : ${destinationPath}`, });
     } else if (framework === "html-x-css-x-javascript") {
       copyFile(getTemplateDir(`frontend/html-css-javascript`), destinationPath);
 
