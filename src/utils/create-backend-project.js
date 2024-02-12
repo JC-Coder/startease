@@ -159,7 +159,7 @@ export async function createBackendProject(
       // update packageJsonFile
       createAndUpdateFile(
         `${destinationPath}/package.json`,
-        JSON.stringify(packageJson),
+        JSON.stringify(packageJson, null, "  "),
       );
     } else if (framework === "expressjs") {
       let database_config = "";
@@ -240,7 +240,7 @@ export async function createBackendProject(
       // add package json file
       createAndUpdateFile(
         `${destinationPath}/package.json`,
-        JSON.stringify(ExpressJsPackageJsonTemplate),
+        JSON.stringify(ExpressJsPackageJsonTemplate, null, "  "),
       );
     } else if (framework === "django") {
       // django does not support some file namings so the name has to be parsed into a valid python identifier.
