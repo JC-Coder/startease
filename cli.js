@@ -14,6 +14,7 @@ import {
   promptOrm,
   promptProjectName,
   promptProjectStack,
+  promptDependenciesInstall
 } from "./src/utils/prompts.js";
 import { createFrontendProject } from "./src/utils/create-frontend-project.js";
 import { validateProjectName } from "./src/utils/helper.js";
@@ -40,6 +41,7 @@ async function startProject() {
   let database;
   let orm;
   let language;
+  let installDependencies;
 
   const initialMsg = `Simplify Project Setup with the. ${chalk.green(
     toolName,
@@ -81,8 +83,10 @@ async function startProject() {
         orm = await promptOrm(database);
       }
     }
+    installDependencies = await promptDependenciesInstall();
+    
 
-    await createBackendProject(projectName, framework, database, orm);
+    await createBackendProject(projectName, framework, database, orm, installDependencies);
   }
 }
 
