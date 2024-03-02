@@ -39,20 +39,6 @@ import crypto from "crypto";
 import {  processDependenciesInstall } from "./helper.js";
 import { sendStat } from "./stat.js";
 
-/**
- * loader
- */
-let stages = [{ message: "Creating Project ...", duration: 2000 }];
-
-async function startSpinner() {
-  for (const stage of stages) {
-    const spinner = ora(stage.message).start();
-    await new Promise((resolve) => setTimeout(resolve, stage.duration));
-    spinner.succeed(stage.message.replace("...", " completed."));
-  }
-
-  stages = [{ message: "Creating Project ...", duration: 2000 }];
-}
 
 /**
  * function to create backend projects
@@ -63,7 +49,9 @@ export async function createBackendProject(
   framework,
   database,
   orm,
+  installDependencies
 ) {
+  const spinner = ora('Creating Project ...').start();
   try {
     const destinationPath = path.join(
       process.cwd(),
@@ -90,7 +78,8 @@ export async function createBackendProject(
       );
 
       if (database) {
-        stages.push({ message: "Adding Database Module ...", duration: 1000 });
+        spinner.succeed();
+        spinner.start('Adding Database Module ...');
 
         switch (database) {
           case "mongodb":
@@ -180,7 +169,8 @@ export async function createBackendProject(
       );
 
       if (database) {
-        stages.push({ message: "Adding Database Module ...", duration: 1000 });
+        spinner.succeed();
+        spinner.start('Adding Database Module ...');
 
         // create schema folder
         createFolder(`${destinationPath}/src/modules/schemas`);
@@ -336,10 +326,8 @@ export async function createBackendProject(
       if (shell.which("git")) {
         // initialize git for the final source
 
-        stages.push({
-          message: "Initializing git ...",
-          duration: 1000,
-        });
+        spinner.succeed();
+        spinner.start("Initializing git ...");
 
         shell.cd(`${destinationPath}`);
         shell.exec(`git init`);
@@ -350,19 +338,20 @@ export async function createBackendProject(
     }
 
     // process dependencies install
-    await processDependenciesInstall(framework, destinationPath);
+    if (installDependencies) {
+      spinner.succeed()
+      spinner.start("Installing dependencies ...")
+      await processDependenciesInstall(framework, destinationPath);
+    }
 
     // success message
-    stages.push({
-      message: `Backend project created successfully! : ${destinationPath}`,
-      duration: 1000,
-    });
+    spinner.succeed()
+    spinner.succeed(`Backend project created successfully! : ${destinationPath}`)
 
     // send stat
     sendStat("startease", framework).then(() => {
     })
 
-    await startSpinner();
   } catch (e) {
     console.log(`Error Creating Backend Project: ${e}`);
   }
