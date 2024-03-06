@@ -322,19 +322,6 @@ export async function createBackendProject(
           projectName,
         },
       );
-
-      if (shell.which("git")) {
-        // initialize git for the final source
-
-        spinner.succeed();
-        spinner.start("Initializing git ...");
-
-        shell.cd(`${destinationPath}`);
-        shell.exec(`git init`);
-        shell.exec(`git add .`);
-        shell.exec(`git commit -m "Initial commit"`);
-        shell.cd("-");
-      }
     }
 
     // process dependencies install
