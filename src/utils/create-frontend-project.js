@@ -4,21 +4,6 @@ import ora from "ora";
 import { sendStat } from "./stat.js";
 
 /**
- * loader
- */
-let stages = [{ message: "Creating Project ...", duration: 2000 }];
-
-async function startSpinner() {
-  for (const stage of stages) {
-    const spinner = ora(stage.message).start();
-    await new Promise((resolve) => setTimeout(resolve, stage.duration));
-    spinner.succeed(stage.message.replace("...", " completed."));
-  }
-
-  stages = [{ message: "Creating Project ...", duration: 2000 }];
-}
-
-/**
  * function to create frontend projects
  * @param {string} framework - {reactjs, vuejs}
  * @param {string} projectName
@@ -26,6 +11,7 @@ async function startSpinner() {
  */
 
 export async function createFrontendProject(projectName, framework, language) {
+  const spinner = ora("Creating Project ...").start();
   try {
     const destinationPath = path.join(
       process.cwd(),
@@ -52,14 +38,11 @@ export async function createFrontendProject(projectName, framework, language) {
       }
 
       // success message
-      stages.push({
-        message: `Frontend - ReactJS project with ${
+      spinner.succeed(
+        `Frontend - ReactJS project with ${
           language.charAt(0).toUpperCase() + language.slice(1)
         } created successfully! : ${destinationPath}`,
-        duration: 1000,
-      });
-
-      await startSpinner();
+      );
     } else if (framework === "vuejs") {
       switch (language) {
         case "javascript":
@@ -79,25 +62,22 @@ export async function createFrontendProject(projectName, framework, language) {
       }
 
       // success message
-      stages.push({
-        message: `Frontend - VueJs project with ${
+      spinner.succeed(
+        `Frontend - VueJs project with ${
           language.charAt(0).toUpperCase() + language.slice(1)
-        } created successfully! : ${destinationPath}`, });
+        } created successfully! : ${destinationPath}`,
+      );
     } else if (framework === "html-x-css-x-javascript") {
       copyFile(getTemplateDir(`frontend/html-css-javascript`), destinationPath);
 
       // success message
-      stages.push({
-        message: `Frontend - plain html with css and javascript created successfully! : ${destinationPath}`,
-        duration: 1000,
-      });
-
-      await startSpinner();
+      spinner.succeed(
+        `Frontend - plain html with css and javascript created successfully! : ${destinationPath}`,
+      );
     }
 
     // update stat
-    sendStat("startease", framework).then(() => {
-    })
+    sendStat("startease", framework).then(() => {});
   } catch (e) {
     console.log(`Error Creating Frontend Project: ${e}`);
   }
