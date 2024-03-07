@@ -1,5 +1,4 @@
 import shell, { exit } from "shelljs";
-import { promptDependenciesInstall } from "./prompts.js";
 import isOnline from "is-online";
 
 /**
@@ -28,26 +27,17 @@ export async function isConnectedToInternet() {
  * process dependencies install
  */
 export async function processDependenciesInstall(framework, destinationPath) {
-  const installDep = await promptDependenciesInstall();
-
-  if (!installDep) {
-    return;
-  }
-
   // check user has internet connection
   if (await isConnectedToInternet()) {
-    console.log("===== Installing Dependencies ...... ===== ");
-
+    shell.cd(`${destinationPath}`);
     switch (framework) {
       case "expressjs":
-        shell.cd(`${destinationPath}`);
         shell.exec(`npm install`);
         shell.exec(`npm run format:fix`);
         shell.cd("-");
         break;
 
       case "nestjs":
-        shell.cd(`${destinationPath}`);
         shell.exec(`npm install`);
         shell.exec(`npm run format`);
         shell.cd("-");
