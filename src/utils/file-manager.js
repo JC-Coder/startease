@@ -144,3 +144,19 @@ export function createFolder(path) {
 export const getTemplateDir = (filePath) => {
   return path.join(__dirname, "..", "../templates", filePath);
 };
+
+/**
+ * Add .gitignore file to project scaffold
+ * @param {string} type
+ * @param {string} destination
+ */
+export function addGitignore(type, destination) {
+  const templateDir = getTemplateDir("gitignores");
+  const gitignoreDestination = `${destination}/.gitignore`;
+  if (["reactjs", "vuejs"].includes(type)) {
+    type = "frontend";
+  }
+  const gitignoreSource = `${templateDir}/${type}`;
+  fs.createFileSync(gitignoreDestination);
+  fs.copyFileSync(gitignoreSource, gitignoreDestination);
+}
