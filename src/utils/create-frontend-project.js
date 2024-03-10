@@ -1,4 +1,4 @@
-import { copyFile, getTemplateDir } from "./file-manager.js";
+import { addGitignore, copyFile, getTemplateDir } from "./file-manager.js";
 import path from "path";
 import ora from "ora";
 import { sendStat } from "./stat.js";
@@ -50,6 +50,7 @@ export async function createFrontendProject(projectName, framework, language) {
         default:
           break;
       }
+      addGitignore(framework, destinationPath);
 
       // success message
       stages.push({
@@ -77,12 +78,14 @@ export async function createFrontendProject(projectName, framework, language) {
         default:
           break;
       }
+      addGitignore(framework, destinationPath);
 
       // success message
       stages.push({
         message: `Frontend - VueJs project with ${
           language.charAt(0).toUpperCase() + language.slice(1)
-        } created successfully! : ${destinationPath}`, });
+        } created successfully! : ${destinationPath}`,
+      });
     } else if (framework === "html-x-css-x-javascript") {
       copyFile(getTemplateDir(`frontend/html-css-javascript`), destinationPath);
 
@@ -96,8 +99,7 @@ export async function createFrontendProject(projectName, framework, language) {
     }
 
     // update stat
-    sendStat("startease", framework).then(() => {
-    })
+    sendStat("startease", framework).then(() => {});
   } catch (e) {
     console.log(`Error Creating Frontend Project: ${e}`);
   }
