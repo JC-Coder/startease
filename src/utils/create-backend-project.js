@@ -336,6 +336,7 @@ export async function createBackendProject(
         shell.cd("-");
       }
     }
+
     addGitignore(framework, destinationPath);
 
     // process dependencies install

@@ -153,10 +153,13 @@ export const getTemplateDir = (filePath) => {
 export function addGitignore(type, destination) {
   const templateDir = getTemplateDir("gitignores");
   const gitignoreDestination = `${destination}/.gitignore`;
+
   if (["reactjs", "vuejs"].includes(type)) {
-    type = "frontend";
+    type = "nextjs";
   }
+
   const gitignoreSource = `${templateDir}/${type}`;
+
   fs.createFileSync(gitignoreDestination);
   fs.copyFileSync(gitignoreSource, gitignoreDestination);
 }
