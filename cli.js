@@ -3,6 +3,8 @@
 import figlet from "figlet";
 import { program } from "commander";
 import chalk from "chalk";
+import shell from "shelljs";
+import path from "path";
 import useGradient from "./src/utils/useGradient.js";
 import { createBackendProject } from "./src/utils/create-backend-project.js";
 import {
@@ -14,11 +16,13 @@ import {
   promptOrm,
   promptProjectName,
   promptProjectStack,
-  promptDependenciesInstall
+  promptDependenciesInstall,
+  promptInitializeGit
 } from "./src/utils/prompts.js";
 import { createFrontendProject } from "./src/utils/create-frontend-project.js";
 import { validateProjectName } from "./src/utils/helper.js";
 import { sendQueuedStats } from "./src/utils/stat.js";
+import ora from "ora";
 
 const toolName = "StartEase";
 const jsBackendStacks = ["expressjs", "nestjs"];
@@ -42,6 +46,7 @@ async function startProject() {
   let orm;
   let language;
   let installDependencies;
+  let initializeGit;
 
   const initialMsg = `Simplify Project Setup with the. ${chalk.green(
     toolName,
@@ -65,12 +70,13 @@ async function startProject() {
   if (projectStack === "frontend") {
     language = await promptFrontendLanguage();
     framework = await promptFrontendFramework();
+    initializeGit = await promptInitializeGit();
 
     if (framework === "html-x-css-x-javascript") {
       return await createFrontendProject(projectName, framework, "javascript");
     }
 
-    return await createFrontendProject(projectName, framework, language);
+    await createFrontendProject(projectName, framework, language);
   } else if (projectStack === "backend") {
     framework = await promptBackendFramework();
 
@@ -83,10 +89,30 @@ async function startProject() {
         orm = await promptOrm(database);
       }
     }
+
     installDependencies = await promptDependenciesInstall();
-    
+    initializeGit = await promptInitializeGit();
 
     await createBackendProject(projectName, framework, database, orm, installDependencies);
+  }
+  if (initializeGit) {
+    if (shell.which("git")) {
+      const destinationPath = path.join(
+        process.cwd(),
+        projectName ?? `project-starter-${framework}-template`,
+      );
+      // initialize git for the final source
+      const spinner = ora();
+      spinner.succeed();
+      spinner.start("Initializing git ...");
+
+      shell.cd(`${destinationPath}`);
+      shell.exec(`git init`, { silent: true });
+      shell.exec(`git add .`, { silent: true });
+      shell.exec(`git commit -m "Initial commit"`, { silent: true });
+      shell.cd("-");
+      spinner.succeed("Project ready!🚀");
+    }
   }
 }
 

@@ -128,3 +128,15 @@ export async function promptDependenciesInstall() {
 
   return result.installDependencies;
 }
+
+export async function promptInitializeGit() {
+  const result = await inquirer.prompt([
+    {
+      type: "confirm",
+      name: "initializeGit",
+      message: "Initialize Git?",
+      default: true,
+    },
+  ]);
+  return result.initializeGit;
+}
