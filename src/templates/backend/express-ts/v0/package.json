@@ -5,7 +5,7 @@
 	"main": "server.js",
 	"scripts": {
 		"start": "node -r ts-node/register/transpile-only -r tsconfig-paths/register build/server.js",
-		"start-prod": "node build/server.js",
+		"start-prod": "node -r module-alias/register build/server.js",
 		"build": "tsc",
 		"dev": "nodemon",
 		"watch": "tsc --watch & nodemon build/server.js",
@@ -63,6 +63,7 @@
 		"node": ">=20.11.0"
 	},
 	"_moduleAliases": {
-		"@": "./build"
+		"@": "./build",
+		"src": "./build"
 	}
 }
